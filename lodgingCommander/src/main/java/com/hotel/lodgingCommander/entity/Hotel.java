@@ -1,5 +1,6 @@
 package com.hotel.lodgingCommander.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +23,7 @@ public class Hotel {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -47,6 +48,7 @@ public class Hotel {
     private String detail;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Room> rooms;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)

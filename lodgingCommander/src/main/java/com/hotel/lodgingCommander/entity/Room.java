@@ -1,5 +1,6 @@
 package com.hotel.lodgingCommander.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,7 @@ public class Room {
 
     @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)
+    @JsonBackReference
     private Hotel hotel;
 
     @OneToOne
