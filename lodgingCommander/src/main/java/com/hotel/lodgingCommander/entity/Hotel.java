@@ -66,5 +66,5 @@ public class Hotel {
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<BookingQna> bookingQnas;
+    private List<BookingQnaPost> bookingQnaPosts;
 }
