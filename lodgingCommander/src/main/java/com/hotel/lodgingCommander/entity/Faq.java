@@ -35,11 +35,11 @@ public class Faq {
 
     @Column(name = "Upload_Date&Time", nullable = false)
     @CreatedDate
-    private LocalDateTime qnaUploadDateTime;
+    private LocalDateTime uploadDateTime;
 
     @Column(name = "Edit_Date&Time", nullable = false)
     @LastModifiedDate
-    private LocalDateTime qnaEditDateTime;
+    private LocalDateTime editDateTime;
 
     @Column(columnDefinition = "integer default 0")
     private int view;

@@ -40,7 +40,7 @@ public class FaqService {
             existingFaq.setContent(faqDetails.getContent());
 
             // 수정 시간 업데이트
-            existingFaq.setQnaEditDateTime(LocalDateTime.now());
+            existingFaq.setEditDateTime(LocalDateTime.now());
 
             return faqRepository.save(existingFaq);
         }

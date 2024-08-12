@@ -32,8 +32,9 @@ public class FaqController {
         return new ResponseEntity<>(faq,HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(consumes ="application/json")
     public ResponseEntity<Faq> createFaq(@RequestBody Faq faq) {
+        System.out.println("Received FAQ:" + faq);
         Faq createdFaq = faqService.createFaq(faq);
         return new ResponseEntity<>(createdFaq, HttpStatus.CREATED);
     }

@@ -29,9 +29,9 @@ public class BookingQnaComment {
 
     @Column(name = "comment_date_time", nullable = false, updatable = false)
     @CreatedDate
-    private LocalDateTime commentDateTime;
+    private LocalDateTime uploadDateTime;
 
-    @Column(name = "comment_edit_date_time")
+    @Column(name = "comment_edit_date_time", nullable = false)
     @LastModifiedDate
     private LocalDateTime editDateTime;
 

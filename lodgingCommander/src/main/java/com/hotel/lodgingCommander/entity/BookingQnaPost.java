@@ -40,11 +40,6 @@ public class BookingQnaPost {
     @Lob
     private String content;
 
-    @OneToMany(mappedBy = "bookingQnaPosts", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @OrderBy("id asc")
-    @JsonManagedReference
-    private List<BookingQnaComment> bookingQnaComments;
-
     @Column(name = "upload_date_time", nullable = false, updatable = false)
     @CreatedDate
     private LocalDateTime uploadDateTime;
@@ -55,4 +50,9 @@ public class BookingQnaPost {
 
     @Column(columnDefinition = "integer default 0")
     private int view;
+
+    @OneToMany(mappedBy = "bookingQnaPosts", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OrderBy("id asc")
+    @JsonManagedReference
+    private List<BookingQnaComment> bookingQnaComments;
 }

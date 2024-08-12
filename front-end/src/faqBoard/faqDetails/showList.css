@@ -1,0 +1,15 @@
+.faq-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.faq-actions {
+    margin-top: 10px;
+}
+
+.faq-actions a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: blue;
+}

@@ -1,84 +1,45 @@
-import {useState} from "react";
-import {Button, Container, FormControl, Table} from "react-bootstrap";
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
 
-let Write = () => {
-    let [inputs, setInputs] = useState(
-        {
-            title:'',
-            content:''
-        }
-    )
+import './Write.css';
 
-    let navigate = useNavigate()
+function Write() {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
-    let moveToNext = (id) => {
-        navigate(`/faqBoard/showOne/${id}`)
-    }
-
-    let onChange = (e) => {
-        let {name,value} = e.target
-        setInputs({
-            ...inputs,
-            [name]: value
-        })
-    }
-
-    let onSubmit = async (e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            let resp = await axios.post('http://localhost:8080/faqBoard/write', inputs)
-
-            if(resp.data.resultId !== undefined) {
-                moveToNext(resp.data.resultId)
-            }
-        }catch (error){
-            console.error(error)
+            const response = await axios.post('http://localhost:8080/api/faqs',
+                { title, content },
+                {
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    }
+            });
+            alert('FAQ created successfully');
+            // Redirect or clear form
+        } catch (error) {
+            console.error('Error creating FAQ:', error);
         }
-    }
+    };
 
     return (
-        <Container className={"mt-3"}>
-            <form onSubmit={onSubmit}>
-                <Table striped hover bordered>
-                    <thead>
-                    <tr>
-                        <td colSpan={2} className={"text-center"} 글 작성하기></td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>제목</td>
-                        <td><FormControl
-                            type={'text'}
-                            value={inputs.title}
-                            name={'title'}
-                            onChange={onChange}/></td>
-                    </tr>
-                    <tr>
-                        <td>내용</td>
-                        <td>
-                            <textarea
-                                name= {'content'}
-                                value={inputs.content}
-                                className={"form-control"}
-                                onChange={onChange}/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colSpan={2} className={'text-center'}>
-                            <Button type={'submit'}>
-                                작성하기
-                            </Button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </Table>
-            </form>
-
-        </Container>
-    )
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="FAQ Title"
+            />
+            <textarea
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                placeholder="FAQ Content"
+            />
+            <button type="submit">Create FAQ</button>
+        </form>
+    );
 }
 
-export default Write
+export default Write;
