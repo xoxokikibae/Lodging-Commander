@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
-@RequestMapping("/api/faqs")
+@RequestMapping("/api")
 public class FaqController {
 
     private final FaqService faqService;
@@ -20,32 +21,32 @@ public class FaqController {
         this.faqService = faqService;
     }
 
-    @GetMapping
+    @GetMapping("/listFaqs")
     public ResponseEntity<List<Faq>> getAllFaqs() {
         List<Faq> faqs = faqService.getAllFaqs();
         return new ResponseEntity<>(faqs, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Faq> getFaqById(@PathVariable Long id) {
+    @GetMapping("/faqs/{id}")
+    public ResponseEntity<?> getFaqById(@PathVariable Long id) {
         Faq faq = faqService.getFaqById(id);
         return new ResponseEntity<>(faq,HttpStatus.OK);
     }
 
-    @PostMapping(consumes ="application/json")
+    @PostMapping("/upload/{id}")
     public ResponseEntity<Faq> createFaq(@RequestBody Faq faq) {
         System.out.println("Received FAQ:" + faq);
         Faq createdFaq = faqService.createFaq(faq);
         return new ResponseEntity<>(createdFaq, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Faq> updateFaq(@PathVariable Long id, @RequestBody Faq faqDetails) {
         Faq updatedFaq = faqService.updateFaq(id, faqDetails);
       return new ResponseEntity<>(updatedFaq, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteFaq(@PathVariable Long id) {
         faqService.deleteFaq(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

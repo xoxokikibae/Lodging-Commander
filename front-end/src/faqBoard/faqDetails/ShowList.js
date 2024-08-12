@@ -9,7 +9,7 @@ function ShowList() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
-    const [pageSize, setPageSize ] = useState(10);
+    const [pageSize] = useState(10);
 
     useEffect(() => {
         (async () => {
