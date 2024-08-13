@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Update.css';
+import './Modified.css';
 
-function Update() {
+function Modified() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const { id } = useParams();
@@ -29,10 +29,10 @@ function Update() {
         e.preventDefault();
         try {
             await axios.put(`http://localhost:8080/api/faqs/${id}`, { title, content });
-            alert('FAQ updated successfully');
+            alert('FAQ Modified successfully');
             navigate('/faqBoard/faqDetails/ShowList');
         } catch (error) {
-            console.error('Error updating FAQ:', error);
+            console.error('Error Modified FAQ:', error);
         }
     };
 
@@ -49,9 +49,9 @@ function Update() {
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="FAQ Content"
             />
-            <button type="submit">Update FAQ</button>
+            <button type="submit">Modified FAQ</button>
         </form>
     );
 }
 
-export default Update;
+export default Modified;

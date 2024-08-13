@@ -105,3 +105,4 @@ let Details = () => {
 };
 
 export default Details;
+

@@ -43,8 +43,8 @@ function ShowList() {
                             <h2>{faq.title}</h2>
                             <p>{faq.content}</p>
                             <div className="faq-actions">
-                                <Link to={`/faqBoard/faqDetails/ShowOne/${faq.id}`}>View</Link>
-                                <Link to={`/faqBoard/faqDetails/Update/${faq.id}`}>Edit</Link>
+                                <Link to={`/faqBoard/faqDetails/ShowOne/${faq.id}`}>ShowOne</Link>
+                                <Link to={`/faqBoard/faqDetails/Modified/${faq.id}`}>Modified</Link>
                                 <Link to={`/faqBoard/faqDetails/Delete/${faq.id}`}>Delete</Link>
                             </div>
                         </div>

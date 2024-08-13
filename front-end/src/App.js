@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import React from 'react';
 
 //Import "User-related"
@@ -19,23 +19,27 @@ import Cart from "./cart/Cart";
 //Import "Home-related"
 import StartPage from "./home/StartPage";
 import Header from "./home/component/Header";
+import Footer from "./home/component/Footer";
 
 //Import "FAQ-related"
 import FaqMain from './faqBoard/faqMain';
 import Write from './faqBoard/faqDetails/Write';
-import Update from './faqBoard/faqDetails/Update';
+import Modified from './faqBoard/faqDetails/Modified'
 import ShowOne from './faqBoard/faqDetails/ShowOne';
 import ShowList from './faqBoard/faqDetails/ShowList';
 import Delete from './faqBoard/faqDetails/Delete';
 
 function App() {
   return (
-      <Router>
-          <div>
+          <div className="App">
               <Header/>
               <Routes>
                   //from main branch
-                  <Route path="/" element={<StartPage/>}/>
+                  <Route path="/" element={
+                      <div>
+                          <StartPage />
+                      </div>
+                  }/>
 
                   <Route path="/user/register" element={<Register/>}/>
                   <Route path="/user/update" element={<Update/>}/>
@@ -48,19 +52,19 @@ function App() {
                   <Route path="/cart" element={<Cart/>}/>
 
                   //from jeongyeon branch
-                  <Route exact path="/faqBoard/faqMain" element={<FaqMain/>}/>
+                  <Route path="/faqBoard/faqMain" element={<FaqMain/>}/>
 
                   <Route path="/faqBoard/faqDetails/ShowList/:pageNo" element={<ShowList/>}/>
                   <Route path="/faqBoard/faqDetails/Write" element={<Write/>}/>
-                  <Route path="/faqBoard/faqDetails/Update/:id" element={<Update/>}/>
+                  <Route path="/faqBoard/faqDetails/Modified/:id" element={<Modified/>}/>
                   <Route path="/faqBoard/faqDetails/ShowOne/:id" element={<ShowOne/>}/>
                   <Route path="/faqBoard/faqDetails/Delete/:id" element={<Delete/>}/>
 
                   // Redirect for FAQ Main
-                  <Route path="/" element={<Navigate to="/faqBoard/faqMain" replace/>}/>
+                  <Route path="/faqMain" element={<Navigate to="/faqBoard/faqMain" replace/>}/>
               </Routes>
+              <Footer />
           </div>
-      </Router>
   );
 }
 
