@@ -1,6 +1,7 @@
 package com.hotel.lodgingCommander.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,13 +25,14 @@ public class Room {
     @Column(nullable = false)
     private int price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id", nullable = false)
     @JsonBackReference
     private Hotel hotel;
 
-    @OneToOne
-    @JoinColumn(name = "img_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "img_id", nullable = true)
+    @JsonBackReference
     private Img img;
 
     @Column(nullable = false)
@@ -42,9 +44,8 @@ public class Room {
     @Column(name = "max_people", nullable = false)
     private int maxPeople;
 
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Cart> carts;
-
-    // Getters and setters...
 }
 

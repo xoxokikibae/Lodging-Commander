@@ -1,14 +1,16 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import Booking from "./booking/Booking";
-import ShowRoomList from "./room/ShowRoomList";
+import RoomList from "./pages/RoomList";
+import BookingList from "./pages/BookingList";
+import Booking from "./pages/Booking";
 
 function App() {
     return (
         <div>
             <Routes>
-                <Route path="/roomList" element={<ShowRoomList/>}/>
-                <Route path="/booking" element={<Booking/>}/>
+                <Route path="/roomList" element={<RoomList/>}/>
+                <Route path="/booking/:id" element={<Booking/>}/>
+                <Route path="/bookingList" element={<BookingList/>}/>
             </Routes>
         </div>
     );

@@ -1,34 +1,52 @@
 package com.hotel.lodgingCommander.service;
 
 import com.hotel.lodgingCommander.entity.Room;
-import com.hotel.lodgingCommander.model.RoomDTO;
+import com.hotel.lodgingCommander.model.RoomResponseDTO;
 import com.hotel.lodgingCommander.repository.RoomRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RoomService {
     private final RoomRepository ROOMS_REPOSITORY;
 
-    // selectAll where room all table
-    public HashMap<String, Object> selectAllRoom() {
+    // convert entity to dto
+    private RoomResponseDTO convertToDTO(Room entity) {
+        RoomResponseDTO resultDTO = new RoomResponseDTO();
+        resultDTO.setId(entity.getId());
+        resultDTO.setHotelName(entity.getHotel().getName());
+        resultDTO.setRoomName(entity.getName());
+        resultDTO.setOneDayPrice(entity.getPrice());
+        resultDTO.setDetail(entity.getDetail());
+        resultDTO.setMaxPeople(entity.getMaxPeople());
+        resultDTO.setImgPath(entity.getImg().getPath());
+        return resultDTO;
+    }
+
+    // ----------------------------------------------------------------------------------------------------
+
+    // select all room
+    @Transactional(readOnly = true)
+    public Map<String, Object> selectAllRoom() {
         List<Room> room = ROOMS_REPOSITORY.findAll();
-        List<RoomDTO> roomDTOs = room.stream()
-                .map(RoomDTO::toDTO)
-                .collect(Collectors.toList());
+        List<RoomResponseDTO> roomDTO = room.stream()
+                .map(this::convertToDTO)
+                .toList();
+        return Map.of("roomList", roomDTO);
+    }
 
-        HashMap<String, Object> resultMap = new HashMap<>();
-        resultMap.put("roomList", roomDTOs);
-
-        return resultMap;
+    // select one room
+    @Transactional(readOnly = true)
+    public RoomResponseDTO selectOneRoom(Long id) {
+        Room room = ROOMS_REPOSITORY.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Entity not found"));
+        return convertToDTO(room);
     }
 
 }

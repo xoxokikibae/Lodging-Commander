@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
+import java.util.Map;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
@@ -18,9 +18,8 @@ public class RoomController {
 
     private final RoomService ROOM_SERVICE;
 
-    // print room map json
     @GetMapping("roomList")
-    public ResponseEntity<HashMap<String,Object>> roomList() {
+    public ResponseEntity<Map<String, Object>> roomList() {
         return ResponseEntity.ok(ROOM_SERVICE.selectAllRoom());
     }
 

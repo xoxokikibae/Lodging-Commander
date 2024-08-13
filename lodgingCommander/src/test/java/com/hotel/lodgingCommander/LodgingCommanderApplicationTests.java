@@ -10,4 +10,9 @@ class LodgingCommanderApplicationTests {
 	void contextLoads() {
 	}
 
+
+
+
+
+
 }
