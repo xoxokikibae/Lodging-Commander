@@ -43,7 +43,7 @@ public class User {
     private String grade;
 
     @Column(nullable = false)
-    private String role;
+    private UserRole role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
