@@ -92,10 +92,6 @@ public class UserService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
 
-            //  user.setStayCount(user.getStayCount() + 1);
-            //  UserGrade newGrade = calculateUserGrade(user.getStayCount());
-            //  user.setGrade(String.valueOf(newGrade));
-
             USER_REPOSITORY.save(user);
         } else {
             throw new RuntimeException("User not found with email: " + email);

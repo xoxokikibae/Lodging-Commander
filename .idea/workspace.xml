@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ae7492c-3a22-4697-8fa3-6630e60bc3ff" name="Changes" comment="git merge 1">
-      <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/faqMain.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/home/component/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/Header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/ShowList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/ShowList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Update.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Modified.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Update.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Modified.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/hotel/Details.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/hotel/Details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/room/components/RoomSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/room/components/RoomSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/lodgingCommander/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +50,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -74,8 +88,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build lodgingCommander.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.LodgingCommanderApplication.executor": "Run",
     "git-widget-placeholder": "jeongyeon",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/USER/Desktop/새 폴더",
@@ -88,6 +109,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src\home\component" />
+      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src" />
+      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src\js" />
+      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src\css" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="LodgingCommanderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -139,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723532581460</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="git merge 1">
+      <option name="closed" value="true" />
+      <created>1723532899413</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723532899413</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

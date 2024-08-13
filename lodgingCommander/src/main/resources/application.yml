@@ -12,3 +12,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  devtools:
+      livereload:
+        port: 35730
