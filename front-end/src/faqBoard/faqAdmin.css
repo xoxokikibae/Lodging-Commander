@@ -1,0 +1,28 @@
+.faq-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.faq-nav-link {
+    padding: 10px 20px;
+    background-color: #e36a24;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: "Josefin Sans", Nanum Gothic;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.faq-admin-heading {
+    font-family: "Josefin Sans", Nanum Gothic;
+    font-style: normal;
+    font-weight: 400;
+    font-optical-sizing: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

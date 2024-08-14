@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/faqBoard/faqAdmin")
 public class FaqController {
 
     private final FaqService faqService;

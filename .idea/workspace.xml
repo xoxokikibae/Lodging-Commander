@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ae7492c-3a22-4697-8fa3-6630e60bc3ff" name="Changes" comment="git merge 1">
+      <change afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqAdmin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqMain.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqMain.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Write.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Write.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Write.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Write.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqMain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/home/component/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/home/component/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/hotel/Details.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/hotel/Details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/user/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/user/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lodgingCommander/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lodgingCommander/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/FaqController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/FaqController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/entity/enums/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/entity/enums/UserRole.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lodgingCommander" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -90,6 +100,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.LodgingCommanderApplication (1).executor": "Run",
     "Spring Boot.LodgingCommanderApplication.executor": "Run",
     "git-widget-placeholder": "jeongyeon",
     "ignore.virus.scanning.warn.message": "true",
@@ -114,11 +125,7 @@
       <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src\css" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="LodgingCommanderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="lodgingCommander.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hotel.lodgingCommander.LodgingCommanderApplication" />
+  <component name="RunManager" selected="Spring Boot.LodgingCommanderApplication (1)">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Lodging-Commander" />
       <method v="2">
@@ -128,6 +135,19 @@
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="Lodging-Commander" />
       <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LodgingCommanderApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="lodgingCommander.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hotel.lodgingCommander.LodgingCommanderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LodgingCommanderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,6 +178,7 @@
       <workItem from="1723460821440" duration="909000" />
       <workItem from="1723509011164" duration="184000" />
       <workItem from="1723596470155" duration="19529000" />
+      <workItem from="1723631934117" duration="7103000" />
     </task>
     <task id="LOCAL-00001" summary="user duplicated issue">
       <option name="closed" value="true" />

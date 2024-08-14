@@ -14,5 +14,4 @@ public enum UserRole implements CodeEnum<String> {
     public String getCode() {
         return code;
     }
-
 }

@@ -61,10 +61,6 @@ function FaqMain() {
                     </div>
                 ))}
             </div>
-            <nav className="faq-nav">
-                <Link to="/faqBoard/faqDetails/Write" className="faq-nav-link">새로운 FAQ 작성하기</Link>
-                <Link to="/faqBoard/faqDetails/ShowList" className="faq-nav-link">모든 FAQs 보기</Link>
-            </nav>
         </div>
     );
 }

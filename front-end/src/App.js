@@ -24,6 +24,7 @@ import Footer from "./home/component/Footer";
 
 //Import "FAQ-related"
 import FaqMain from './faqBoard/faqMain';
+import FaqAdmin from "./faqBoard/faqAdmin";
 import Write from './faqBoard/faqDetails/Write';
 import Modified from './faqBoard/faqDetails/Modified'
 import ShowOne from './faqBoard/faqDetails/ShowOne';
@@ -63,16 +64,19 @@ function App() {
                 <Route path="/cart" element={<Cart/>}/>
 
                 //from jeongyeon branch
-                <Route path="/faqBoard/faqMain" element={<FaqMain/>}/>
+                <Route path="/faqBoard/faqMain" element={<FaqMain/>} />
+
+                <Route path='/faqBoard/faqAdmin' element={<FaqAdmin/>} />
 
                 <Route path="/faqBoard/faqDetails/ShowList/:pageNo" element={<ShowList/>}/>
-                <Route path="/faqBoard/faqDetails/Write" element={<Write/>}/>
-                <Route path="/faqBoard/faqDetails/Modified/:id" element={<Modified/>}/>
-                <Route path="/faqBoard/faqDetails/ShowOne/:id" element={<ShowOne/>}/>
-                <Route path="/faqBoard/faqDetails/Delete/:id" element={<Delete/>}/>
+                <Route path="/faqBoard/faqDetails/Write" element={<Write/>} />
+                <Route path="/faqBoard/faqDetails/Modified/:id" element={<Modified/>} />
+                <Route path="/faqBoard/faqDetails/ShowOne/:id" element={<ShowOne/>} />
+                <Route path="/faqBoard/faqDetails/Delete/:id" element={<Delete/>} />
 
                 // Redirect for FAQ Main
-                <Route path="/faqMain" element={<Navigate to="/faqBoard/faqMain" replace/>}/>
+                <Route path="/faqMain" element={<Navigate to="/faqBoard/faqMain" replace="/faqBoard"/>} />
+                <Route path="/faqAdmin" element={<Navigate to="/faqBoard/faqAdmin" replace="/faqBoard"/>} />
 
                 //from Yujeong branch
                 <Route path="/AddressForm" element={<AddressForm/>}/>

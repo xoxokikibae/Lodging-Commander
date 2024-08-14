@@ -38,8 +38,8 @@ const Home = () => {
         navigate('/user/info', {state: {userData, data}});
     }
 
-    const goToAdminPage = () => {
-        window.location.href = '/user/admin';
+    const goToFaqAdminPage = () => {
+        window.location.href = '/faqBoard/faqAdmin';
     }
 
     if (!userData) {
@@ -72,7 +72,7 @@ const Home = () => {
                                     <Button onClick={goBack}>뒤로가기</Button>
                                     <Button onClick={onLogout}>로그아웃</Button>
                                     <Button onClick={goToUserPage}>마이 페이지</Button>
-                                    <Button onClick={goToAdminPage}>어드민 페이지</Button>
+                                    <Button onClick={goToFaqAdminPage}>자주 묻는 질문(FAQ) 관리</Button>
                                 </ButtonGroup>
                             </td>
                         </tr>

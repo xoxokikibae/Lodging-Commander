@@ -12,6 +12,7 @@
 }
 
 .write-form input[type="text"],
+
 .write-form textarea {
     width: 100%;
     padding: 10px;
@@ -31,4 +32,29 @@
 
 .write-form button:hover {
     background-color: #005999;
+}
+
+.faq-admin-write-container {
+
+}
+
+.faq-admin-write-heading {
+
+
+}
+
+.faq-admin-write-form {
+
+}
+
+.faq-admin-write-title {
+
+}
+
+.faq-admin-write-content {
+
+}
+
+.faq-admin-write-button {
+
 }

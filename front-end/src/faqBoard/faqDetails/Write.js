@@ -51,25 +51,33 @@ function Write() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="FAQ Title"
-            />
-            <textarea
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="FAQ Content"
-            />
-            {isLoading && <p> Creating FAQ...</p>}
-            {error && <p className="error"> Error: {error} </p>}
+        <div className="faq-admin-write-container">
+            <h2 className="faq-admin-write-heading"> 새로운 자주 묻는 질문(FAQ) 등록 페이지 </h2>
 
-            <button type="submit" disabled={isLoading}>
-                {isLoading ? 'Creating...' : 'Create FAQ'}
-            </button>
-        </form>
+            <div>
+                <form onSubmit={handleSubmit} className='faq-admin-write-form'>
+                    <input
+                        type="text"
+                        placeholder="새롭게 등록할 '자주 묻는 질문(FAQ)'를 입력하세요"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="faq-admin-write-title"
+                    />
+                    <textarea
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        placeholder="해당 '자주 묻는 질문(FAQ)'에 대한 답변을 입력하세요"
+                        className="faq-admin-write-content"
+                    />
+                    {isLoading && <p> Creating FAQ...</p>}
+                    {error && <p className="error"> Error: {error} </p>}
+
+                    <button type="submit" className="faq-admin-write-button" disabled={isLoading}>
+                        {isLoading ? 'Creating...' : 'Create FAQ'}
+                    </button>
+                </form>
+            </div>
+        </div>
     );
 }
 
