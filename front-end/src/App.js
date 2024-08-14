@@ -1,4 +1,5 @@
 import './App.css';
+import './style.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import React from 'react';
 
@@ -63,6 +64,7 @@ function App() {
                   // Redirect for FAQ Main
                   <Route path="/faqMain" element={<Navigate to="/faqBoard/faqMain" replace/>}/>
               </Routes>
+
               <Footer />
           </div>
   );
