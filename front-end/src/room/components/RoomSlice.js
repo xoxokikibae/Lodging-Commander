@@ -13,7 +13,7 @@ let RoomSlice = ({room, checkInDate, checkOutDate, userInfo}) => {
         navigate('/Auth')
     }
     let originalPrice = calculate.calculatePrice(checkInDate, checkOutDate, room.price);
-    let discountedPrice = userInfo ? calculate.calculateDiscountedPrice(originalPrice, userInfo.grade) : originalPrice;
+    let discountedPrice = userInfo ? calculate.calculateDiscountedPrice(originalPrice, userInfo.userGrade) : originalPrice;
 
     return (
         <Container>
@@ -97,4 +97,3 @@ let RoomSlice = ({room, checkInDate, checkOutDate, userInfo}) => {
 }
 
 export default RoomSlice;
-

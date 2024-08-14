@@ -92,6 +92,10 @@ public class UserService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
 
+            //  user.setStayCount(user.getStayCount() + 1);
+            //  UserGrade newGrade = calculateUserGrade(user.getStayCount());
+            //  user.setGrade(String.valueOf(newGrade));
+
             USER_REPOSITORY.save(user);
         } else {
             throw new RuntimeException("User not found with email: " + email);
@@ -99,4 +103,8 @@ public class UserService {
     }
 
 
+    public User getUserById(Long userId) {
+        return USER_REPOSITORY.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+    }
 }
