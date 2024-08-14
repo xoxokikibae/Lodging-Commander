@@ -31,7 +31,10 @@ const headingStyle = {
 const columnStyle = {
     display: 'flex',
     flexDirection: 'column',
+    marginTop: '2rem',
     marginBottom: '2rem',
+    marginLeft: '4rem',
+    marginRight: '4rem'
 };
 
 const linkStyle = {
@@ -74,23 +77,7 @@ const Footer = () => {
                 <h2 style={headingStyle}>⚓️ Lodging Commander </h2>
                 <p style={mainContentStyle}>Lodging Commander is your go-to platform for finding the perfect and special accommodation. </p>
 
-                <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap'}}>
-                    <div style={columnStyle}>
-                        <h6>인기 도시</h6>
-                        <ul className="list-unstyled">
-                            <li><Link to="/city/seoul" style={linkStyle}>서울 호텔</Link></li>
-                            <li><Link to="/city/busan" style={linkStyle}>부산 호텔</Link></li>
-                            <li><Link to="/city/jeju" style={linkStyle}>제주 호텔</Link></li>
-                        </ul>
-                    </div>
-
-                    <div style={columnStyle}>
-                        <h6>인기 국가 및 지역</h6>
-                        <ul className="list-unstyled">
-                            <li><Link to="/country/korea" style={linkStyle}>한국 호텔</Link></li>
-                            <li><Link to="/country/japan" style={linkStyle}>일본 호텔</Link></li>
-                        </ul>
-                    </div>
+                <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
                     <div style={columnStyle}>
                         <h6>지원 및 자주 묻는 질문</h6>
                         <ul className="list-unstyled">
