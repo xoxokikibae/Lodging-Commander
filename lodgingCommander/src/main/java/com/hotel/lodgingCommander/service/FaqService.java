@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class FaqService {
@@ -57,5 +59,15 @@ public class FaqService {
 
     public List<Faq> searchFaqsByContent(String keyword) {
         return faqRepository.findByContentContaining(keyword);
+    }
+
+    public List<Map<String,Object>> getFaqCategories() {
+        List<Map<String,Object>> faqCategories = new ArrayList<>();
+        return faqCategories;
+    }
+
+    public List<Map<String, Object>> getFaqCategoriesWithDocuments() {
+        List<Map<String, Object>> faqCategoriesWithDocuments = new ArrayList<>();
+        return faqCategoriesWithDocuments;
     }
 }

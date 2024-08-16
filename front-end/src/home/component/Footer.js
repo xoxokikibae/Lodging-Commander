@@ -97,22 +97,22 @@ const Footer = () => {
             </div>
 
             <Row>
-                <p style={bottomStyle1}>
+                <div className={bottomStyle1}>
                     <div> © 2024 Lodgingcommander.com은 Bootcamp 계열사입니다. All rights reserved.</div>
                     <div> Lodgingcommander.com 및 Lodgingcommander.com 로고는 한국 및/또는 다른 국가에서 Lodgingcommander.com, LP의
                         상표
                         또는 등록 상표입니다. 기타 로고 상표는 해당 소유자의 재산입니다.
                     </div>
-                </p>
+                </div>
 
-                <p style={bottomStyle2}>
+                <div className={bottomStyle2}>
                     <div> 주소: 서울특별시 서초구 서초대로74길 33, 4층, Tel: 02-0000-0000</div>
                     <div> Mail: CS-KR@support.Lodgingcommander.com</div>
                     <div> 통신판매업신고번호:서초-0042호 사업자등록번호: 000-00-0000 대표이사: Commander</div>
                     <div> 관광사업자 등록번호:제2024-000815호 서울특별시비트협회
                         호스팔리티사업자 회원번호:0000
                     </div>
-                </p>
+                </div>
             </Row>
         </footer>
     )

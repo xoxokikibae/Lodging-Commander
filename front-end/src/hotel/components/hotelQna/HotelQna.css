@@ -1,0 +1,41 @@
+.hotel-qna-system {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.qna-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.question-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 20px 0;
+}
+
+.question-item h3 {
+    cursor: pointer;
+}
+
+.question-meta, .answer-meta {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.answers {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.answer-item {
+    margin-bottom: 10px;
+}
+
+.vote-button {
+    background-color: #f2f2f2;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}

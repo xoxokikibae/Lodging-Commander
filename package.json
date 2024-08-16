@@ -5,6 +5,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.3",
     "dayjs": "^1.11.12",
+    "lucide-react": "^0.427.0",
     "rc-tooltip": "^6.2.0",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.26.0"

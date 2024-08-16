@@ -1,7 +1,6 @@
 package com.hotel.lodgingCommander.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -65,5 +64,5 @@ public class Hotel {
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<BookingQnaPost> bookingQnaPosts;
+    private List<HotelQuestion> hotelQuestions;
 }
