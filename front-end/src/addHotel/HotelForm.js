@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useNavigate, useLocation} from 'react-router-dom';
-import {Container, Form, Button, Row, Col, Alert} from 'react-bootstrap';
+import {Container, Form, Button, Row, Col} from 'react-bootstrap';
 
 const HotelForm = () => {
     const [name, setName] = useState('');

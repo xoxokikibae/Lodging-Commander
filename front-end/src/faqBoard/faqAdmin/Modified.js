@@ -3,14 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Modified.css';
 
-import {Tab, Tabs, Button} from 'react-bootstrap';
-
 function Modified() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
-    const [ActiveTab, setActiveTab] = useState('faqModified');
 
     useEffect(() => {
         const fetchFaq = async () => {
@@ -23,7 +20,6 @@ function Modified() {
             }
         };
 
-        // Call the async function and handle the promise directly
         fetchFaq().catch(error => console.error('Error in useEffect fetchFaq:', error));
 
     }, [id]);

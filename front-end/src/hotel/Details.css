@@ -1,0 +1,33 @@
+.qna-write-button {
+    padding: 10px 20px;
+    background-color: #fad505;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: "Josefin Sans", Nanum Gothic;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    border: none;
+}
+
+.qna-view-all-button {
+    padding: 10px 20px;
+    background-color: #fa9c05;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: "Josefin Sans", Nanum Gothic;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    border: none;
+}
+
+.qna-write-main-container {
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}

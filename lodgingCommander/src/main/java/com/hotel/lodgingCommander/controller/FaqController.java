@@ -4,14 +4,14 @@ import com.hotel.lodgingCommander.entity.Faq;
 import com.hotel.lodgingCommander.service.FaqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/faqBoard")
 public class FaqController {
@@ -24,8 +24,10 @@ public class FaqController {
     }
 
     @GetMapping("/faqAdmin/listFaqs")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<Faq>> getAllFaqs() {
-        List<Faq> faqs = faqService.getAllFaqs();
+        List<Faq> faqs = faqService.getAllFaqsSortedById();
+        System.out.println("Sending FAQs:" + faqs);
         return new ResponseEntity<>(faqs, HttpStatus.OK);
     }
 
@@ -35,8 +37,8 @@ public class FaqController {
         return new ResponseEntity<>(faq, HttpStatus.OK);
     }
 
-    @PostMapping("/faqAdmin/upload/{id}")
-    public ResponseEntity<Faq> createFaq(@RequestBody Faq faq) {
+    @PostMapping(value = "/faqAdmin/Write/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Faq> createFaq(@PathVariable Long id, @RequestBody Faq faq) {
         System.out.println("Received FAQ:" + faq);
         Faq createdFaq = faqService.createFaq(faq);
         return new ResponseEntity<>(createdFaq, HttpStatus.CREATED);

@@ -21,8 +21,10 @@ public class FaqService {
         this.faqRepository = faqRepository;
     }
 
-    public List<Faq> getAllFaqs() {
-        return faqRepository.findAll();
+    public List<Faq> getAllFaqsSortedById() {
+        List<Faq> faqs = faqRepository.findAllByOrderByIdAsc();
+        System.out.println("Fetched FAQs:" + faqs);
+        return faqs;
     }
 
     public Faq getFaqById(Long id) {

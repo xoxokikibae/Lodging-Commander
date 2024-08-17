@@ -1,14 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {useLocation, useParams} from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomList from "../room/RoomList";
 import HotelFacility from "./components/HotelFacility";
-import {getTodayDate} from "../js/day";
-import {Form, Alert, Card, Carousel, Col, Container, FloatingLabel, ListGroup,
-    Row, Spinner, Table, Button} from "react-bootstrap";
+import { getTodayDate } from "../js/day";
+import {
+    Form, Alert, Card, Carousel, Col, Container, FloatingLabel, ListGroup,
+    Row, Spinner, Table, Button
+} from "react-bootstrap";
 
 import Kakao from "./components/Kakao";
+
+import './Details.css'
+import HotelQna from "./components/hotelQna/HotelQna";
 
 const HotelQnaHeading = {
     fontFamily: 'Josefin Sans, Nanum Gothic',
@@ -23,12 +28,12 @@ const HotelQnaHeading = {
 
 const HotelQnaHeading2 = {
     fontFamily: 'Josefin Sans, Nanum Gothic',
-    fontSize: '3rem',
+    fontSize: '1.5rem',
     fontWeight: '400',
     fontStyle: 'normal',
     fontOpticalSizing: 'auto',
-    marginTop: '2rem',
-    marginBottom: '2rem',
+    marginTop: '2.5rem',
+    marginBottom: '2.5rem',
     justifyContent: 'center'
 }
 
@@ -45,65 +50,73 @@ const Details = () => {
 
     const [checkInDate, setCheckInDate] = useState(initialCheckInDate);
     const [checkOutDate, setCheckOutDate] = useState(initialCheckOutDate);
-    let {id} = useParams();
-    let [hotel, setHotel] = useState({hotel: {}});
+    const { id } = useParams();
+    const [hotel, setHotel] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     //QNA by jeongyeon
     const [qnaList, setQnaList] = useState([]);
+    const [qnaData, setQnaData] = useState(null);
+    const [qnaError, setQnaError] = useState(null);
 
     useEffect(() => {
         const fetchHotelDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/hotel/details/${id}`, {withCredentials: true});
+                const response = await axios.get(`http://localhost:8080/hotel/details/${id}`, { withCredentials: true });
                 setHotel(response.data.hotel);
                 console.log(response.data);
             } catch (error) {
                 console.error('Error fetching hotel details:', error);
+                setError('호텔 정보를 가져오는 데 오류가 발생했습니다.');
             }
         };
+
         const fetchReviews = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/review/hotel/${id}`, {withCredentials: true});
+                const response = await axios.get(`http://localhost:8080/review/hotel/${id}`, { withCredentials: true });
                 if (response.status === 200) {
                     setReviews(response.data.reviews || []);
                 } else {
-                    throw new Error('서버 오류');
+                    new Error('서버 오류');
                 }
             } catch (error) {
                 console.error('Error fetching reviews:', error);
                 setError('리뷰를 가져오는 데 오류가 발생했습니다.');
-            } finally {
-                setLoading(false);
             }
         };
 
-        const fetchQnA = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8080/hotel/details/${id}`, {withCredentials: true});
-                setQnaList(response.data);
-            } catch (error) {
-                console.error('Error fetching QnA:', error);
-            }
-        }
+        const fetchAllData = async () => {
+            setLoading(true);
+            await Promise.all([fetchHotelDetails(), fetchReviews()]);
+            setLoading(false);
+        };
 
-        if (id) {
-            fetchHotelDetails();
-            fetchReviews();
-            fetchQnA();
-        }
-
+        fetchAllData();
     }, [id]);
 
-    const isFormValid = checkInDate && checkOutDate && new Date(checkInDate) <= new Date(checkOutDate);
+    const handleViewMyQuestions = () => {
+        // Implement the logic for viewing user's questions
+        console.log("View my questions clicked");
+    };
 
-    if (!hotel) return <div>Loading...</div>;
-    if (loading) return <Spinner animation="border" variant="primary"/>;
-    if (error) return <Alert variant="danger">{error}</Alert>;
-    if (!hotel) return <div>Loading...</div>;
+    const handleWriteQuestion = () => {
+        // Implement the logic for writing a new question
+        console.log("Write question clicked");
+    };
 
+    if (loading) {
+        return <Spinner animation="border" />;
+    }
+
+    if (error) {
+        return <Alert variant="danger">{error}</Alert>;
+    }
+
+    if (!hotel) {
+        return <div>호텔 정보를 찾을 수 없습니다.</div>;
+    }
 
     return (
         <Container className="mt-5">
@@ -141,14 +154,14 @@ const Details = () => {
                     <p>{hotel.detail}</p>
                 </Col>
                 <Col>
-                    <Kakao id={id}/>
+                    <Kakao id={id} />
                 </Col>
             </Row>
             <Row className="mt-3">
                 <Col md={12}>
                     <h4>호텔 편의 시설</h4>
                     <ul>
-                        <HotelFacility amenities={hotel.facilities}/>
+                        <HotelFacility amenities={hotel.facilities} />
                     </ul>
                 </Col>
             </Row>
@@ -188,7 +201,7 @@ const Details = () => {
                 <Col sm={9}>
                     <Row className="mt-3">
                         <RoomList userInfo={userInfo} checkInDate={checkInDate} checkOutDate={checkOutDate}
-                                  hotelId={hotel.id}/>
+                                  hotelId={hotel.id} />
                     </Row>
                 </Col>
             </Row>
@@ -202,22 +215,31 @@ const Details = () => {
                         <ListGroup>
                             {reviews.map((review) => (
                                 <ListGroup.Item key={review.id}>
-                                    <h5>작성자: {review.userName}</h5>
+                                    <h5>작성자: {review.user?.nickname || '익명'}</h5>
                                     <p>{review.content}</p>
                                     <p><strong>평점:</strong> {review.rating}</p>
                                 </ListGroup.Item>
                             ))}
                         </ListGroup>
                     )}
+                </Col>
+            </Row>
 
-                    <Row className="mt-5">
-                        <Col>
-                            <h2 style={HotelQnaHeading}>Q&A</h2>
-                            <h3 style={HotelQnaHeading2}>예약을 확정하고자하는 숙소에 대해 궁금한 점이 있으신 경우 문의해주세요.</h3>
-                            <div className="d-flex justify-content-between mb-3">
-                                <Button variant="dark">숙소 Q&A 작성하기</Button>
-                                <Button variant="outline-secondary">나의 Q&A 조회</Button>
-                            </div>
+            <Container className="qna-write-main-container" style={{ marginTop: '5%' }}>
+                <Row className="mt-5">
+                    <Col>
+                        <h2 style={HotelQnaHeading}> 💙 Q&A 💙 </h2>
+                        <h2 style={HotelQnaHeading2}>숙소에 대해 궁금한 점이 있으신 경우 아래 Q&A를 통해 문의해주세요.</h2>
+
+                        {qnaError && <Alert variant="danger">{qnaError}</Alert>}
+                        {qnaData && <HotelQna hotelId={id} hotelName={hotel.hotelName} qnaData={qnaData} />}
+
+                        <div className="d-flex justify-content-between mb-3">
+                            <Button className="qna-view-all-button" onClick={handleViewMyQuestions}>나의 Q&A 조회</Button>
+                            <Button className="qna-write-button" onClick={handleWriteQuestion}>숙소 Q&A 작성하기</Button>
+                        </div>
+
+                        {qnaList.length > 0 ? (
                             <Table striped bordered hover>
                                 <thead>
                                 <tr>
@@ -230,7 +252,7 @@ const Details = () => {
                                 <tbody>
                                 {qnaList.map((qna, index) => (
                                     <tr key={index}>
-                                        <td>{qna.answerId}</td>
+                                        <td>{qna.answerId ? '답변완료' : '미답변'}</td>
                                         <td>{qna.title}</td>
                                         <td>{qna.author}</td>
                                         <td>{qna.uploadDateTime}</td>
@@ -238,13 +260,15 @@ const Details = () => {
                                 ))}
                                 </tbody>
                             </Table>
-                            <div className="d-flex justify-content-center mt-3">
-                                <Button variant="primary">1</Button>
-                            </div>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
+                        ) : (
+                            <Alert variant="info"> 등록된 Q&A가 아직 없습니다.</Alert>
+                        )}
+                        <div className="d-flex justify-content-center mt-3">
+                            <Button variant="primary"> 1 </Button>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
         </Container>
     );
 };

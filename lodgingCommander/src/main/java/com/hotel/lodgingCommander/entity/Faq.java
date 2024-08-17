@@ -33,6 +33,9 @@ public class Faq {
     @Column(length = 1000, nullable = false)
     private String content;
 
+    @Column
+    private String category;
+
     @Column(name = "Upload_Date&Time", nullable = false)
     @CreatedDate
     private LocalDateTime uploadDateTime;

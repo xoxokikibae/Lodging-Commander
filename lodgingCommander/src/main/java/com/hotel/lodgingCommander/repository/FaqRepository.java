@@ -10,4 +10,5 @@ import java.util.List;
 public interface FaqRepository extends JpaRepository<Faq, Long> {
     List<Faq> findByTitleContaining(String keyword);
     List<Faq> findByContentContaining(String keyword);
+    List<Faq> findAllByOrderByIdAsc();
 }

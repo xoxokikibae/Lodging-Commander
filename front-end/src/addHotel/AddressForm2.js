@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Row, Col, Alert } from 'react-bootstrap';
+import Map from './Map'; // Map 컴포넌트 import
 
 const AddressForm2 = () => {
     const [address, setAddress] = useState('');
     const [addressDetail, setAddressDetail] = useState('');
     const [postCode, setPostCode] = useState('');
     const [extraAddress, setExtraAddress] = useState('');
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
@@ -18,44 +19,93 @@ const AddressForm2 = () => {
 
     useEffect(() => {
         const loadDaumPostcodeScript = () => {
-            const script = document.createElement('script');
-            script.src = '//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
-            script.async = true;
-            document.body.appendChild(script);
-            script.onload = () => {
-                if (window.daum && window.daum.Postcode) {
-                    window.daum.Postcode({
-                        oncomplete: function (data) {
-                            const addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
-                            let extraAddr = '';
-
-                            if (data.userSelectedType === 'R') {
-                                if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-                                    extraAddr += data.bname;
-                                }
-                                if (data.buildingName !== '' && data.apartment === 'Y') {
-                                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                                }
-                                if (extraAddr !== '') {
-                                    extraAddr = ' (' + extraAddr + ')';
-                                }
-                            } else {
-                                extraAddr = '';
-                            }
-
-                            setPostCode(data.zonecode);
-                            setAddress(addr);
-                            setExtraAddress(extraAddr);
-                            setAddressDetail('');
-                            document.getElementById('addressDetail').focus();
-                        }
-                    });
-                }
-            };
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = '//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
+                script.async = true;
+                document.body.appendChild(script);
+                script.onload = resolve;
+                script.onerror = reject;
+            });
         };
 
-        loadDaumPostcodeScript();
+        const loadKakaoMapScript = () => {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=2352038d1f2d9450032dd17ae632df20&autoload=false&libraries=services`;
+                script.async = true;
+                document.body.appendChild(script);
+                script.onload = () => {
+                    window.kakao.maps.load(() => {
+                        resolve();
+                    });
+                };
+                script.onerror = reject;
+            });
+        };
+
+        const loadScripts = async () => {
+            try {
+                await loadDaumPostcodeScript();
+                await loadKakaoMapScript();
+                initPostcode();
+            } catch (error) {
+                console.error('Failed to load scripts', error);
+                setError('Failed to load external scripts');
+            }
+        };
+
+        const initPostcode = () => {
+            if (window.daum && window.daum.Postcode) {
+                new window.daum.Postcode({
+                    oncomplete: function (data) {
+                        const addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
+                        let extraAddr = '';
+
+                        if (data.userSelectedType === 'R') {
+                            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                                extraAddr += data.bname;
+                            }
+                            if (data.buildingName !== '' && data.apartment === 'Y') {
+                                extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                            }
+                            if (extraAddr !== '') {
+                                extraAddr = ' (' + extraAddr + ')';
+                            }
+                        } else {
+                            extraAddr = '';
+                        }
+
+                        setPostCode(data.zonecode);
+                        setAddress(addr);
+                        setExtraAddress(extraAddr);
+                        setAddressDetail('');
+                        document.getElementById('addressDetail').focus();
+
+                        // 주소로부터 위도와 경도 얻기
+                        getCoordinates(addr);
+                    }
+                }).open();
+            }
+        };
+
+        loadScripts();
     }, []);
+
+    const getCoordinates = (address) => {
+        if (window.kakao && window.kakao.maps) {
+            const geocoder = new window.kakao.maps.services.Geocoder();
+            geocoder.addressSearch(address, (result, status) => {
+                if (status === window.kakao.maps.services.Status.OK) {
+                    const { x, y } = result[0]; // x는 경도, y는 위도
+                    setLongitude(x);
+                    setLatitude(y);
+                } else {
+                    alert('해당 지역의 좌표를 찾을 수 없습니다.');
+                }
+            });
+        }
+    };
 
     const handlePostcodeSearch = () => {
         if (window.daum && window.daum.Postcode) {
@@ -83,6 +133,9 @@ const AddressForm2 = () => {
                     setExtraAddress(extraAddr);
                     setAddressDetail('');
                     document.getElementById('addressDetail').focus();
+
+                    // 주소로부터 위도와 경도 얻기
+                    getCoordinates(addr);
                 }
             }).open();
         }
@@ -159,49 +212,16 @@ const AddressForm2 = () => {
                         />
                     </Col>
                 </Form.Group>
-                <Form.Group as={Row} className="mb-3" controlId="formExtraAddress">
-                    <Form.Label column sm={2}>참고항목</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type="text"
-                            value={extraAddress}
-                            placeholder="참고항목"
-                            readOnly
-                        />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row} className="mb-3" controlId="formLatitude">
-                    <Form.Label column sm={2}>위도</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type="number"
-                            step="any"
-                            value={latitude}
-                            onChange={(e) => setLatitude(e.target.value)}
-                            placeholder="위도"
-                            required
-                        />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row} className="mb-3" controlId="formLongitude">
-                    <Form.Label column sm={2}>경도</Form.Label>
-                    <Col sm={10}>
-                        <Form.Control
-                            type="number"
-                            step="any"
-                            value={longitude}
-                            onChange={(e) => setLongitude(e.target.value)}
-                            placeholder="경도"
-                            required
-                        />
-                    </Col>
-                </Form.Group>
                 <Button variant="primary" type="submit">
                     다음
                 </Button>
             </Form>
+            {latitude && longitude && (
+                <Map latitude={latitude} longitude={longitude} />
+            )}
         </Container>
     );
 };
+
 
 export default AddressForm2;

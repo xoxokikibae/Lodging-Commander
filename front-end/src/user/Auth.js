@@ -5,16 +5,16 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 
-let Auth = () => {
-    let [inputs, setInputs] = useState({
+const Auth = () => {
+    const [inputs, setInputs] = useState({
         email: '',
         password: ''
     });
 
-    let [error, setError] = useState('');
-    let navigate = useNavigate();
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-    let onChange = (e) => {
+    const onChange = (e) => {
         let {name, value} = e.target;
         console.log(name, value)
         setInputs({
@@ -22,14 +22,14 @@ let Auth = () => {
         });
     };
 
-    let onSubmit = async (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            let formData = new FormData()
+            const formData = new FormData()
             formData.append('email', inputs.email)
             formData.append('password', inputs.password)
 
-            let response = await axios({
+            const response = await axios({
                 url: 'http://localhost:8080/user/auth',
                 method: 'POST',
                 data: formData,
@@ -37,6 +37,7 @@ let Auth = () => {
             })
 
             if (response.data.result === 'success') {
+                localStorage.setItem('token', response.data.token)
                 navigate('/user/authSuccess', {state: {userData: response.data}});
             } else {
                 navigate('/user/authFail');
@@ -46,7 +47,7 @@ let Auth = () => {
         }
     };
 
-    let onRegister = () => {
+    const onRegister = () => {
         navigate('/user/register');
     };
 

@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/hotels/{hotelId}/Answers")
-
+@RequestMapping("/answer/")
 public class HotelAnswerController {
 
     private final HotelAnswerService hotelAnswerService;
@@ -18,7 +17,7 @@ public class HotelAnswerController {
         this.hotelAnswerService = hotelAnswerService;
     }
 
-    @PostMapping
+    @PostMapping("add")
     public ResponseEntity <HotelAnswer> addHotelAnswer(
             @PathVariable Long hotelId,
             @PathVariable Long questionId,
