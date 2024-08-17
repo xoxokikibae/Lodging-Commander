@@ -31,7 +31,7 @@ const Delete = () => {
         return <div>{error}</div>;
     }
 
-    return null; // This will not be rendered as the component will navigate away or show error
+    return null;
 };
 
 export default Delete;

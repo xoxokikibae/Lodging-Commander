@@ -2,7 +2,6 @@ package com.hotel.lodgingCommander.controller;
 
 import com.hotel.lodgingCommander.entity.HotelQuestion;
 import com.hotel.lodgingCommander.service.HotelQuestionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/hotels/{hotelId}/questions")
 public class HotelQuestionController {
-    @Autowired
+
     private HotelQuestionService hotelQuestionService;
 
     @GetMapping

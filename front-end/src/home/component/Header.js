@@ -68,6 +68,9 @@ let Header = () => {
                                                 <NavDropdown.Item href="#action/3.2">
                                                     남은 등급 상승포인트
                                                 </NavDropdown.Item>
+                                                <NavDropdown.Item onClick={() => changePage('faqBoard/faqAdmin')}>
+                                                    자주 묻는 질문 (FAQ) 관리
+                                                </NavDropdown.Item>
                                                 <NavDropdown.Divider/>
                                                 <NavDropdown.Item onClick={onLogout}>
                                                     <p className='text-danger text-center m-0'>LOGOUT</p>

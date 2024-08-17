@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Write.css';
+import {Tab, Tabs, Button} from 'react-bootstrap';
 
 import axios from 'axios';
 
@@ -8,6 +9,8 @@ function Write() {
     const [content, setContent] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    const [activeTab, setActiveTab] = useState('newFaqUploaded');
 
     const handleSubmit = async (e) => {
         e.preventDefault();

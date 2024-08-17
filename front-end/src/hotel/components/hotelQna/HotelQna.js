@@ -1,50 +1,100 @@
-import React, {useEffect, useState} from 'react';
-import {Pagination} from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Container, Tab, Tabs, Pagination, Button, Modal, Form } from "react-bootstrap";
+import './HotelQna.css';
 
-export function HotelQnaSystem({ hotelId }) {
+const HotelQna = ({ hotelId, hotelName }) => {
     const [questions, setQuestions] = useState([]);
+    const [activeTab, setActiveTab] = useState('all');
+
     const [filters, setFilters] = useState({ category: 'all', answeredStatus: 'all' });
 
-    useEffect(() => {
-        setIsLoading(true);
-        fetchQuestions(hotelId,filters)
-            .then(data => {
-                setQuestions(data)
-                setIsLoading(false);
-            })
-            .catch(error => {
-                console.log('Error fetching question:',error)
-                setIsLoading(false);
-            });
-    }, [hotelId, filters]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [totalPages, setTotalPages] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(true);
+
     useEffect(() => {
-        setIsLoading(true);
-        fetchQuestions(hotelId, filters)
-            .then(data => {
-                setQuestions(data);
+        const fetchQuestions = async () => {
+            setIsLoading(true);
+            setError(null);
+            try {
+                const response = await axios.get(`http://localhost:8080/hotel/details/${hotelId}/questions`, {
+                    params: { ...filters, totalPages: currentPage, tab: activeTab }
+                });
+                setQuestions(response.data.questions);
+                setTotalPages(response.data.totalPages);
+
                 setIsLoading(false);
-            })
-            .catch(error => {
-                console.error('Error fetching questions:', error);
+            } catch (error) {
+                console.error('질문을 불러오는데 에러가 발생했습니다:', error);
                 setIsLoading(false);
-            });
-    }, [hotelId, filters]);
+            }
+            return (fetchQuestions);
+        };
+    }, [hotelId, filters, currentPage, activeTab]);
+
+    if (isLoading) return <div> Loading Q&As... </div>;
 
     return (
-        <div className="hotel-qna-system">
-            <h2>HOTEL Q&A</h2>
-            <QnaStats questions={questions} />
-            <QnaFilters filters={filters} setFilters={setFilters} />
-            <AskQuestionButton hotelId={hotelId} />
-            {isLoading ? <p>로딩 중...</p> : <QuestionList questions={questions} />}
-            <Pagination />
-        </div>
+        <Container className="qna-contatiner">
+            <div className="hotel-qna-system">
+                <h2> 숙소에 관해 질문하기 Q&A</h2>
+                <p> 숙소:{hotelName}에 관하여 질문 (Q&A) </p>
+
+                {questions.map((qna,index) => (
+                    <div key={index} className="qa-qna">
+                        <h3> 질문: {qna.question} </h3>
+                        <h3> 답변: {qna.answer} </h3>
+                    </div>
+                ))}
+                <p> Q&A for hotel Name: {hotelName} </p>
+                <QnaStats questions={questions} />
+                <QnaFilters filters={filters} setFilters={setFilters} />
+                <Button onClick={() => setIsModalOpen(true)}>문의하기</Button>
+            </div>
+            <Tabs
+                activeKey={activeTab}
+                onSelect={(k) => setActiveTab(k)}
+                className="active-tab-style mt-3"
+            >
+                <Tab eventKey="all" title="모든 질문 보기">
+                    <QuestionList questions={questions} isLoading={isLoading} />
+                </Tab>
+                <Tab eventKey="myQuestion" title="내 질문 보기">
+                    <QuestionList questions={questions.filter(q => q.userId === getCurrentUserId())} isLoading={isLoading} />
+                </Tab>
+            </Tabs>
+
+            {!isLoading && (
+                <Pagination className="active-page mt-3">
+                    <Pagination.Prev
+                        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        disabled={currentPage === 1}
+                    />
+                    <Pagination.Item>{currentPage}</Pagination.Item>
+                    <Pagination.Next
+                        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        disabled={currentPage === totalPages}
+                    />
+                </Pagination>
+            )}
+            <Modal show={isModalOpen} onHide={() => setIsModalOpen(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>새로운 질문 작성 하기</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <AskQuestionForm hotelId={hotelId} onClose={() => setIsModalOpen(false)} />
+                </Modal.Body>
+            </Modal>
+        </Container>
     );
 }
 
-function QnaStats({ questions }) {
+const QnaStats = ({ questions }) => {
     return (
         <div className="qna-stats">
             <span>총 {questions.length}개의 질문</span>
@@ -52,20 +102,20 @@ function QnaStats({ questions }) {
     );
 }
 
-function QnaFilters({ filters, setFilters }) {
-    // Implement category and answered status filters
+const QnaFilters = ({ filters, setFilters }) => {
     return (
         <div className="qna-filters">
             <select
                 value={filters.category}
-                onChange={(e) => setFilters({...filters,category: e.target.value})}>
+                onChange={(e) => setFilters({...filters, category: e.target.value})}>
                 <option value="all">모든 카테고리</option>
                 <option value="room">객실</option>
                 <option value="facility">시설</option>
                 <option value="service">서비스</option>
             </select>
-            <select value={filters.answeredStatus}>
-                onChange={(e) => setFilters({...filters,answeredStatus: e.target.value})}>
+            <select
+                value={filters.answeredStatus}
+                onChange={(e) => setFilters({...filters, answeredStatus: e.target.value})}>
                 <option value="all">모든 상태</option>
                 <option value="answeredStatus">답변 완료</option>
                 <option value="unansweredStatus">미답변</option>
@@ -74,18 +124,14 @@ function QnaFilters({ filters, setFilters }) {
     )
 }
 
-function AskQuestionButton({ hotelId }) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+const QuestionList = ({ questions, isLoading }) => {
+    if (isLoading) {
+        return <p>로딩 중...</p>;
+    }
 
-    return (
-        <>
-            <button onClick={() => setIsModalOpen(true)}>문의하기</button>
-            {isModalOpen && <AskQuestionModal hotelId={hotelId} onClose={() => setIsModalOpen(false)} />}
-        </>
-    );
-}
-
-function QuestionList({ questions }) {
+    if (questions.length === 0) {
+        return <p>현재 등록된 질문이 없습니다. </p>;
+    }
     return (
         <div className="question-list">
             {questions.map(question => (
@@ -95,95 +141,149 @@ function QuestionList({ questions }) {
     );
 }
 
-function QuestionItem({ question }) {
+const QuestionItem = ({ question }) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <div className="question-item">
-            <h3 onClick={() => setIsExpanded(!isExpanded)}>{question.questionContent}</h3>
-            <div className="question-meta">
-                <span>{question.questionerName}</span>
-                <span>{formatDate(question.questionDate)}</span>
+            <h3 onClick={() => setIsExpanded(!isExpanded)}>{question.title}</h3>
+            <div className="question-inner">
+                <span>{question.user.nickname}</span>
+                <span>{formatDate(question.uploadDateTime)}</span>
             </div>
             {isExpanded && (
-                <div className="answers">
-                    {question.answers.map(answer => (
-                        <AnswerItem key={answer.id} answer={answer} />
-                    ))}
-                    {question.isAnswered ? null : <AnswerForm questionId={question.id} />}
-                </div>
+                <>
+                    <p>{question.content}</p>
+                    <div className="answers">
+                        {question.answer.map(answer => (
+                            <AnswerItem key={answer.id} answer={answer} />
+                        ))}
+                    </div>
+                </>
             )}
         </div>
     );
 }
 
-function AnswerItem({ answer }) {
+const AnswerItem = ({ answer }) => {
     return (
         <div className="answer-item">
-            <p>{answer.answerContent}</p>
-            <div className="answer-meta">
-                <span>{answer.responderName} ({answer.responderType})</span>
-                <span>{formatDate(answer.answerDate)}</span>
+            <p>{answer.Content}</p>
+            <div className="answer-inner">
+                <span>{answer.user.nickname} '유저 닉네임' </span>
+                <span>{formatDate(answer.uploadDateTime)}</span>
             </div>
-            <VoteButton answerId={answer.id} votes={answer.helpfulVotes} />
+            <VoteButton answerId={answer.id} votes={answer.answer.votes} />
         </div>
     );
 }
 
-function AnswerForm({ questionId }) {
-    // Implement form for answering a question
-    return (
-        <form className="answer-from">
+const AnswerForm = ({questionId}) => {
+    const [answer, setAnswer] = useState('');
 
-        </form>
-    )
-}
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await axios.post(`http://localhost:8080/hotel/questions/${questionId}/answers`, {
+                hotelAnswerContent: answer,
+                userId: getCurrentUserId() // Assume this function exists to get the current user's ID
+            });
+            setAnswer('');
+        } catch (error) {
+            console.error('Error submitting answer:', error);
+        }
+    }
 
-function VoteButton({ answerId, votes }) {
-    // Implement voting functionality
     return (
-        <button className="vote-button">
-            좋아요 ({votes}
-        </button>
-    )
-}
+        <Form onSubmit={handleSubmit}>
+            <div className="form-group row">
+                <inpul class="Form-Control"
+                       type="text"
+                       as="textarea"
+                       rows={3}
+                       value={answer}
+                       onChange={(event) => setAnswer(event.target.value)}
+                       placeholder=".form-conrol-lg"
+                />
+            </div>
 
-function Pagination() {
-    // Implement pagination logic
-    return (
-        <div className="pagination">
-            {/* Add pagination controls here */}
-        </div>
+            <Button type="submit" class="btn btn-primary">해당 질문에 대한 답변을 제출합니다.</Button>
+        </Form>
     );
-}
+};
 
-function AskQuestionModal({ hotelId, onClose }) {
-    // Implement modal for asking questions
+const VoteButton = ({ answerId, initialVotes }) => {
+    const [votes, setVotes] = useState(initialVotes);
+
+    const handleVote = async () => {
+        try {
+            const response = await axios.post(`http://localhost:8080/hotel/answers/${answerId}/vote`);
+            setVotes(prevVotes => prevVotes + 1);
+        } catch (error) {
+            console.error('Error voting for answer:', error);
+        }
+    };
+
     return (
-        <div className="modal">
-            <h2>새 질문 작성</h2>
-            {/* Add form fields here */}
-            <button onClick={onClose}>닫기</button>
-        </div>
+        <Button variant="outline-primary" size="sm" onClick={handleVote}>
+            좋아요 ({votes})
+        </Button>
     );
-}
+};
 
-function calculateAnswerRate(questions) {
-    const answeredQuestions = questions.filter(q => q.isAnswered).length;
-    return questions.length > 0 ? (answeredQuestions / questions.length * 100).toFixed(2) : 0;
-}
+const AskQuestionForm = ({ hotelId, onClose }) => {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
-function formatDate(date) {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post(`http://localhost:8080/hotel/${hotelId}/questions`, {
+                title,
+                content,
+                userId: getCurrentUserId(), // Assume this function exists to get the current user's ID
+                isPublic: true // You might want to add a checkbox for this in the form
+            });
+            onClose();
+        } catch (error) {
+            console.error('Error submitting question:', error);
+        }
+    };
+
+    return (
+        <Form onSubmit={handleSubmit}>
+            <div className= "form.group row">
+                <input className = "form-control"
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="질문 제목"
+                    required
+                />
+            </div>
+            <div className = "form.group row">
+                <input className = "form-control"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="질문 내용"
+                    required
+                />
+            </div>
+            <Button type="submit">질문 제출</Button>
+        </Form>
+    );
+};
+
+const formatDate = (date) => {
     return new Date(date).toLocaleDateString('ko-KR', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
-}
+};
 
-// This function needs to be implemented to fetch data from your API
-async function fetchQuestions(hotelId, filters) {
-    // Implement API call here
-    // For now, return an empty array
-    return [];
-}
+const getCurrentUserId = () => {
+    return 1;
+};
+
+export default HotelQna;

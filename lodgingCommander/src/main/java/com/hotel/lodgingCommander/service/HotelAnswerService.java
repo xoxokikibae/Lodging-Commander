@@ -5,17 +5,14 @@ import com.hotel.lodgingCommander.entity.HotelQuestion;
 import com.hotel.lodgingCommander.exception.ResourceNotFoundException;
 import com.hotel.lodgingCommander.repository.HotelAnswerRepository;
 import com.hotel.lodgingCommander.repository.HotelQuestionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
 public class HotelAnswerService {
-    @Autowired
     private HotelAnswerRepository hotelAnswerRepository;
 
-    @Autowired
     private HotelQuestionRepository hotelQuestionRepository;
 
     public HotelAnswer addHotelAnswer(Long hotelQuestionId, HotelAnswer hotelAnswer) {

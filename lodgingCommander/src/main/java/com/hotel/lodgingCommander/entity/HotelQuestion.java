@@ -18,7 +18,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "HotelQuestion")
+@Table(name = "hotelQuestion")
 public class HotelQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,12 +51,12 @@ public class HotelQuestion {
     @Column(columnDefinition = "integer default 0")
     private int viewCount;
 
-    @OneToMany(mappedBy = "HotelQuestion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hotelQuestion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @OrderBy("id asc")
     @JsonManagedReference
     private List<HotelAnswer> hotelAnswers;
 
-    @Column(name="is_answered", nullable = false)
+    @Column(name="isAnswered", nullable = false)
     private boolean isAnswered;
 
     public boolean isAnswered() {

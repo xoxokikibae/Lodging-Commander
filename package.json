@@ -19,6 +19,9 @@
     "eject": "cd client && react-scripts eject"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/react": "^18.3.3",
+    "@types/react-bootstrap": "^0.32.37",
     "concurrently": "^8.2.2"
   }
 }

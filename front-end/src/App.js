@@ -1,6 +1,6 @@
 import './App.css';
 import './style.css';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import {Route, Routes, Navigate} from 'react-router-dom';
 import React from 'react';
 
 //Import "User-related"
@@ -22,7 +22,7 @@ import StartPage from "./home/StartPage";
 import Header from "./home/component/Header";
 import Footer from "./home/component/Footer";
 
-//Import "FAQ-related"
+//Import "FAQ-related" by Jeongyeon
 import FaqMain from './faqBoard/faqMain';
 import FaqAdmin from "./faqBoard/faqAdmin";
 import Write from './faqBoard/faqDetails/Write';
@@ -43,53 +43,53 @@ import AddressForm3 from "./addHotel/AddressForm3";
 
 function App() {
     return (
-        <div className="App">
-            <Header/>
-            <Routes>
-                //from main branch
-                <Route path="/" element={
-                    <div>
-                        <StartPage />
-                    </div>
-                }/>
+            <div className="App">
+                <Header/>
+                <Routes>
+                    //from main branch
+                    <Route path="/" element={
+                        <div>
+                            <StartPage/>
+                        </div>
+                    }/>
 
-                <Route path="/user/register" element={<Register/>}/>
-                <Route path="/user/update" element={<Update/>}/>
-                <Route path="/user/info" element={<Info/>}/>
-                <Route path="/user/authSuccess" element={<Home/>}/>
-                <Route path="/user/authFail" element={<AuthFail/>}/>
-                <Route path="/Auth" element={<Auth/>}/>
+                    <Route path="/user/register" element={<Register/>}/>
+                    <Route path="/user/update" element={<Update/>}/>
+                    <Route path="/user/info" element={<Info/>}/>
+                    <Route path="/user/authSuccess" element={<Home/>}/>
+                    <Route path="/user/authFail" element={<AuthFail/>}/>
+                    <Route path="/Auth" element={<Auth/>}/>
 
-                <Route path="/hotel/details/:id" element={<Details/>}/>
-                <Route path="/cart" element={<Cart/>}/>
+                    <Route path="/hotel/details/:id" element={<Details/>}/>
+                    <Route path="/cart" element={<Cart/>}/>
 
-                //from jeongyeon branch
-                <Route path="/faqBoard/faqMain" element={<FaqMain/>} />
+                    //from jeongyeon branch
+                    <Route path="/faqBoard/faqMain" element={<FaqMain/>}/>
 
-                <Route path='/faqBoard/faqAdmin' element={<FaqAdmin/>} />
+                    <Route path='/faqBoard/faqAdmin' element={<FaqAdmin/>}/>
 
-                <Route path="/faqBoard/faqDetails/ShowList/:pageNo" element={<ShowList/>}/>
-                <Route path="/faqBoard/faqDetails/Write" element={<Write/>} />
-                <Route path="/faqBoard/faqDetails/Modified/:id" element={<Modified/>} />
-                <Route path="/faqBoard/faqDetails/ShowOne/:id" element={<ShowOne/>} />
-                <Route path="/faqBoard/faqDetails/Delete/:id" element={<Delete/>} />
+                    <Route path="/faqBoard/faqDetails/ShowList/:pageNo" element={<ShowList/>}/>
+                    <Route path="/faqBoard/faqDetails/Write" element={<Write/>}/>
+                    <Route path="/faqBoard/faqDetails/Modified/:id" element={<Modified/>}/>
+                    <Route path="/faqBoard/faqDetails/ShowOne/:id" element={<ShowOne/>}/>
+                    <Route path="/faqBoard/faqDetails/Delete/:id" element={<Delete/>}/>
 
-                // Redirect for FAQ Main
-                <Route path="/faqMain" element={<Navigate to="/faqBoard/faqMain" replace="/faqBoard"/>} />
-                <Route path="/faqAdmin" element={<Navigate to="/faqBoard/faqAdmin" replace="/faqBoard"/>} />
+                    // Redirect for FAQ Main
+                    <Route path="/faqMain" element={<Navigate to="/faqBoard/faqMain" replace="/faqBoard"/>}/>
+                    <Route path="/faqAdmin" element={<Navigate to="/faqBoard/faqAdmin" replace="/faqBoard"/>}/>
 
-                //from Yujeong branch
-                <Route path="/AddressForm" element={<AddressForm/>}/>
-                <Route path="/AddressForm2" element={<AddressForm2/>}/>
-                <Route path="/AddressForm3" element={<AddressForm3/>}/>
-                <Route path="/CategoryForm" element={<CategoryForm/>}/>
-                <Route path="/FacilityForm" element={<FacilityForm/>}/>
-                <Route path="/HotelForm" element={<HotelForm/>}/>
-                <Route path="/RoomForm" element={<RoomForm/>}/>
-                <Route path="/AddHotelSuccess" element={<AddHotelSuccess/>}/>
-            </Routes>
-            <Footer />
-        </div>
+                    //from Yujeong branch
+                    <Route path="/AddressForm" element={<AddressForm/>}/>
+                    <Route path="/AddressForm2" element={<AddressForm2/>}/>
+                    <Route path="/AddressForm3" element={<AddressForm3/>}/>
+                    <Route path="/CategoryForm" element={<CategoryForm/>}/>
+                    <Route path="/FacilityForm" element={<FacilityForm/>}/>
+                    <Route path="/HotelForm" element={<HotelForm/>}/>
+                    <Route path="/RoomForm" element={<RoomForm/>}/>
+                    <Route path="/AddHotelSuccess" element={<AddHotelSuccess/>}/>
+                </Routes>
+                <Footer/>
+            </div>
     );
 }
 

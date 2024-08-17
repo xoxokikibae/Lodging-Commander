@@ -36,7 +36,7 @@ public class HotelAnswer {
     private LocalDateTime editDateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id", nullable = false)
+    @JoinColumn(name = "hotelQuestion_id", nullable = false)
     @JsonBackReference
     private HotelQuestion hotelQuestion;
 }
