@@ -111,10 +111,24 @@ const Details = () => {
 
     const isFormValid = checkInDate && checkOutDate && new Date(checkInDate) <= new Date(checkOutDate);
 
+    const handleViewMyQuestions = () => {
+        navigate('/hotel-qna', {
+            state: {
+                hotelId: id,
+                hotelName: hotel.hotelName
+            }
+        });
+        console.log("View my questions clicked");
+    };
+
+    const handleWriteQuestion = () => {
+        // Implement the logic for writing a new question
+        console.log("Write question clicked");
+    };
+
     if (!hotel) return <div>호텔 정보를 찾을 수 없습니다.</div>;
     if (loading) return <Spinner animation="border" variant="primary"/>;
     if (error) return <Alert variant="danger">{error}</Alert>;
-
 
         return (
             <Container className="mt-5">

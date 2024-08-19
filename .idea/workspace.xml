@@ -1,305 +1,211 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-    <component name="AutoImportSettings">
-        <option name="autoReloadType" value="SELECTIVE"/>
-    </component>
-    <component name="ChangeListManager">
-        <list default="true" id="1ae7492c-3a22-4697-8fa3-6630e60bc3ff" name="Changes" comment="user duplicated issue"/>
-        <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false"
-                afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false"/>
-        <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml"
-                afterDir="false"/>
-        <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false"
-                afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false"/>
-        <change beforePath="$PROJECT_DIR$/.idea/modules/lodgingCommander.main.iml" beforeDir="false"/>
-        <list default="true" id="1ae7492c-3a22-4697-8fa3-6630e60bc3ff" name="Changes" comment="git merge 1">
-            <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Delete.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Delete.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Modified.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Modified.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Write.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/faqBoard/faqDetails/Write.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/home/component/Footer.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/home/component/Footer.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/home/component/Header.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/home/component/Header.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/hotel/Details.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/hotel/Details.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/hotel/components/hotelQna/HotelQna.css" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/hotel/components/hotelQna/HotelQna.css" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/hotel/components/hotelQna/HotelQna.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/hotel/components/hotelQna/HotelQna.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/index.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/index.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/bookingQna/controller/QnaController.java"
-                    beforeDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/bookingQna/service/QnaService.java"
-                    beforeDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/HotelAnswerController.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/HotelAnswerController.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/HotelQuestionController.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/HotelQuestionController.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/entity/HotelAnswer.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/entity/HotelAnswer.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/entity/HotelQuestion.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/entity/HotelQuestion.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/HotelAnswerService.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/HotelAnswerService.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/HotelQuestionService.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/HotelQuestionService.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json"
-                    afterDir="false"/>
-        </list>
-        <list default="true" id="1ae7492c-3a22-4697-8fa3-6630e60bc3ff" name="Changes" comment="user duplicated issue"/>
-        <list default="true" id="1ae7492c-3a22-4697-8fa3-6630e60bc3ff" name="Changes" comment="user duplicated issue">
-            <change beforePath="$PROJECT_DIR$/front-end/src/Reviewlist.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/Reviewlist.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/home/StartPage.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/home/StartPage.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/home/component/Header.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/home/component/Header.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/front-end/src/room/components/RoomSlice.js" beforeDir="false"
-                    afterPath="$PROJECT_DIR$/front-end/src/room/components/RoomSlice.js" afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/HotelController.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/HotelController.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/ReviewController.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/controller/ReviewController.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/model/ReviewDTO.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/model/ReviewDTO.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/repository/HotelRepository.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/repository/HotelRepository.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/HotelService.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/HotelService.java"
-                    afterDir="false"/>
-            <change beforePath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/ReviewService.java"
-                    beforeDir="false"
-                    afterPath="$PROJECT_DIR$/lodgingCommander/src/main/java/com/hotel/lodgingCommander/service/ReviewService.java"
-                    afterDir="false"/>
-        </list>
-        <option name="SHOW_DIALOG" value="false"/>
-        <option name="HIGHLIGHT_CONFLICTS" value="true"/>
-        <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false"/>
-        <option name="LAST_RESOLUTION" value="IGNORE"/>
-    </component>
-    <component name="ChangesViewManager">
-        <option name="groupingKeys">
-            <option value="directory"/>
-        </option>
-    </component>
-    <component name="ExternalProjectsData">
-        <projectState path="$PROJECT_DIR$/lodgingCommander">
-            <ProjectState/>
-        </projectState>
-    </component>
-    <component name="CodyActiveAccount">
-        <option name="activeAccountId" value="VXNlcjo1NDEyMzY="/>
-    </component>
-    <component name="ExternalProjectsData">
-        <projectState path="$PROJECT_DIR$/lodgingCommander">
-            <ProjectState/>
-        </projectState>
-    </component>
-    <component name="ExternalProjectsManager">
-        <system id="GRADLE">
-            <state>
-                <task path="$PROJECT_DIR$/lodgingCommander">
-                    <activation/>
-                </task>
-                <projects_view>
-                    <tree_state>
-                        <expand>
-                            <path>
-                                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode"/>
-                                <item name="lodgingCommander" type="f1a62948:ProjectNode"/>
-                            </path>
-                            <path>
-                                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode"/>
-                                <item name="lodgingCommander" type="f1a62948:ProjectNode"/>
-                                <item name="Tasks" type="e4a08cd1:TasksNode"/>
-                            </path>
-                            <path>
-                                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode"/>
-                                <item name="lodgingCommander" type="f1a62948:ProjectNode"/>
-                                <item name="Dependencies"
-                                      type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode"/>
-                            </path>
-                        </expand>
-                        <expand>
-                            <path>
-                                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode"/>
-                                <item name="lodgingCommander" type="f1a62948:ProjectNode"/>
-                            </path>
-                        </expand>
-                        <select/>
-                    </tree_state>
-                </projects_view>
-            </state>
-        </system>
-    </component>
-    <component name="FileTemplateManagerImpl">
-        <option name="RECENT_TEMPLATES">
-            <list>
-                <option value="HTML File"/>
-                <option value="CSS File"/>
-                <option value="Interface"/>
-                <option value="Class"/>
-                <option value="JavaScript File"/>
-            </list>
-        </option>
-    </component>
-
-    <component name="Git.Settings">
-        <option name="RECENT_BRANCH_BY_REPOSITORY">
-            <map>
-                <entry key="$PROJECT_DIR$" value="main"/>
-                <entry key="$PROJECT_DIR$" value="sangmin"/>
-                <entry key="$PROJECT_DIR$" value="eunseok"/>
-            </map>
-        </option>
-        <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$"/>
-    </component>
-
-    <component name="GitHubPullRequestSearchHistory">{
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1ae7492c-3a22-4697-8fa3-6630e60bc3ff" name="Changes" comment="user duplicated issue">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/home/component/NewList.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/home/component/NewList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/hotel/Details.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/hotel/Details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.cjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.cjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.cjs.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.cjs.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.umd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.umd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.umd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.umd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.umd.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/router.umd.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/utils.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/dist/utils.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@remix-run/router/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@remix-run/router/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/browser/axios.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/browser/axios.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/browser/axios.cjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/browser/axios.cjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/esm/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/esm/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/esm/axios.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/esm/axios.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/esm/axios.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/esm/axios.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/esm/axios.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/esm/axios.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/node/axios.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/node/axios.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/node/axios.cjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/node/axios.cjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/adapters/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/adapters/http.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/env/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/env/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/axios/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/react-router-dom.development.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/react-router-dom.development.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/react-router-dom.development.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/react-router-dom.development.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/react-router-dom.production.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/react-router-dom.production.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/react-router-dom.production.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/react-router-dom.production.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/umd/react-router-dom.development.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/umd/react-router-dom.development.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/umd/react-router-dom.development.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/umd/react-router-dom.development.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/umd/react-router-dom.production.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/umd/react-router-dom.production.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/dist/umd/react-router-dom.production.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/dist/umd/react-router-dom.production.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router-dom/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router-dom/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/react-router.development.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/react-router.development.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/react-router.development.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/react-router.development.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/react-router.production.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/react-router.production.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/react-router.production.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/react-router.production.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/umd/react-router.development.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/umd/react-router.development.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/umd/react-router.development.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/umd/react-router.development.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/umd/react-router.production.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/umd/react-router.production.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/dist/umd/react-router.production.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/dist/umd/react-router.production.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/react-router/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-router/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="CodyActiveAccount">
+    <option name="activeAccountId" value="VXNlcjo1NDEyMzY=" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/lodgingCommander">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/lodgingCommander">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lodgingCommander" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lodgingCommander" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lodgingCommander" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lodgingCommander" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="sangmin" />
+        <entry key="$PROJECT_DIR$" value="eunseok" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
         &quot;lastFilter&quot;: {
         &quot;state&quot;: &quot;OPEN&quot;,
         &quot;assignee&quot;: &quot;chenghaLim&quot;
-        }}
-    </component>
-
-    <component name="GithubPullRequestsUISettings">{
+        }}</component>
+  <component name="GithubPullRequestsUISettings">{
         &quot;selectedUrlAndAccountId&quot;: {
         &quot;url&quot;: &quot;https://github.com/yujeongoyj/Lodging-Commander.git&quot;,
         &quot;accountId&quot;: &quot;06164244-5eed-4fa9-aea9-b86f9a4095bb&quot;
         }
-        }
-    </component>
-    <component name="KubernetesApiPersistence">{}</component>
-    <component name="KubernetesApiProvider">{
+        }</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
         &quot;isMigrated&quot;: true
         &quot;selectedUrlAndAccountId&quot;: {
         &quot;url&quot;: &quot;https://github.com/xoxokikibae/Lodging-Commander.git&quot;,
         &quot;accountId&quot;: &quot;dcba5b13-fa57-47a3-bb56-12df70821638&quot;
         }
-        }
-    </component>
-
-    <component name="PackageJsonUpdateNotifier">
-        <dismissed value="$PROJECT_DIR$/front-end/package.json"/>
-    </component>
-    <component name="ProblemsViewState">
-        <option name="selectedTabId" value="CurrentFile"/>
-    </component>
-    <component name="ProjectColorInfo">{
-        &quot;associatedIndex&quot;: 2
-        }
-    </component>
-    <component name="ProjectId" id="2kGx7ZBnv3UOMcTLrO1ar6B2Igj"/>
-    <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-        <ConfirmationsSetting value="2" id="Add"/>
-    </component>
-
-    <component name="ProjectLevelVcsManager" settingsEditedManually="true"/>
-
-    <component name="ProjectViewState">
-        <option name="hideEmptyMiddlePackages" value="true"/>
-        <option name="showLibraryContents" value="true"/>
-    </component>
-
-    <component name="PropertiesComponent">{
-        &quot;keyToString&quot;: {
-        &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-        &quot;Gradle.Build lodgingCommander.executor&quot;: &quot;Run&quot;,
-        &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-        &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-        &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-        &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-        &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
-        &quot;RunOnceActivity.CodyConvertUrlToCodebaseName&quot;: &quot;true&quot;,
-        &quot;RunOnceActivity.CodyHistoryLlmMigration&quot;: &quot;true&quot;,
-        &quot;RunOnceActivity.CodyProjectSettingsMigration&quot;: &quot;true&quot;,
-        &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-        &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-        &quot;Spring Boot.LodgingCommanderApplication (1).executor&quot;: &quot;Run&quot;,
-        &quot;Spring Boot.LodgingCommanderApplication.executor&quot;: &quot;Run&quot;,
-        &quot;git-widget-placeholder&quot;: &quot;jeongyeon&quot;,
-        &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-        &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-        &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/Desktop/새 폴더&quot;,
-        &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-        &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-        &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-        &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-        &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-        &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-        &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-        &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ
-        IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-        &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-        }
-    </component>
-
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src" />
-      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\public" />
-      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src\home\component" />
-      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src\js" />
-      <recent name="C:\Users\bitcamp\Desktop\Lodging-Commander\front-end\src\css" />
-    </key>
+        }</component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/front-end/package.json" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build lodgingCommander.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.Reviewlist.js.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.LodgingCommanderApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/kang-eunseok/IdeaProjects/Lodging-Commander&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+        &quot;associatedIndex&quot;: 2
+        }</component>
+  <component name="ProjectId" id="2kGx7ZBnv3UOMcTLrO1ar6B2Igj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build lodgingCommander.executor": "Run",
+    "Node.js.Reviewlist.js.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.LodgingCommanderApplication.executor": "Run",
+    "git-widget-placeholder": "jeongyeon",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/kang-eunseok/IdeaProjects/Lodging-Commander",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/front-end/src/review" />
@@ -355,13 +261,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.LodgingCommanderApplication" />
-        <item itemvalue="Spring Boot.LodgingCommanderApplication (1)" />
-        <item itemvalue="Spring Boot.LodgingCommanderApplication" />
-      </list>
-    </recent_temporary>
     <configuration name="LodgingCommanderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="lodgingCommander.main" />
@@ -386,6 +285,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.LodgingCommanderApplication" />
+        <item itemvalue="Spring Boot.LodgingCommanderApplication (1)" />
         <item itemvalue="Spring Boot.LodgingCommanderApplication" />
       </list>
     </recent_temporary>

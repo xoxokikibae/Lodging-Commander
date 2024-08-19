@@ -38,6 +38,7 @@ import HotelForm from "./addHotel/HotelForm";
 import RoomForm from "./addHotel/RoomForm";
 import AddHotelSuccess from "./addHotel/AddHotelSuccess";
 import AddressForm2 from "./addHotel/AddressForm2";
+import NewList from "./home/component/NewList";
 
 //Import "QNA-related" by Jeongyeon
 import HotelQna from "./hotel/components/hotelQna/HotelQna";
@@ -49,7 +50,6 @@ import ReviewInsert from "./reviewinsert";
 import LocationList from "./hotel/LocationList";
 import UserProfile from "./user/UserProfile";
 import ModifyHotel from "./addHotel/ModifyHotel";
-
 
 function App() {
     return (

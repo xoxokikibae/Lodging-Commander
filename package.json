@@ -3,12 +3,14 @@
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
+    "bootstrap": "^5.3.3",
     "dayjs": "^1.11.12",
     "lucide-react": "^0.427.0",
     "rc-tooltip": "^6.2.0",
+    "react-bootstrap": "^2.10.4",
     "react-icons": "^5.2.1",
-    "react-router-dom": "^6.26.0"
+    "react-router-dom": "^6.26.1"
   },
   "scripts": {
     "start": "concurrently \"npm run client\" \"npm run server\"",
