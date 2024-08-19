@@ -7,7 +7,7 @@ const Header = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const userInfo = location.state?.userData || null;
+    const userInfo = location.state?.userData?.userInfo || null;
     console.log("location", location.state);
 
     const changePage = (pageName) => {
@@ -32,10 +32,11 @@ const Header = () => {
         <Container className='mb-3 mt-3'>
             <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand onClick={() => changePage('')} style={{ cursor: 'pointer' }}>
-                        <Image src='http://localhost:8080/log.png' alt="Logo" fluid style={{ width: '150px', height: 'auto' }} />
+                    <Navbar.Brand onClick={() => changePage('')} style={{cursor: 'pointer'}}>
+                        <Image src='http://localhost:8080/log.png' alt="Logo" fluid
+                               style={{width: '150px', height: 'auto'}}/>
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
                             {userInfo ? (
@@ -43,16 +44,16 @@ const Header = () => {
                                     <Row>
                                         <Col>
                                             <NavDropdown title={`${userInfo.nickname}님 환영합니다.`} id="collapsible-nav-dropdown" className="text-end">
-                                                <NavDropdown.Item href="#action/3.1">다가오는 예약</NavDropdown.Item>
-                                                <NavDropdown.Item href="#action/3.2">내 정보 수정</NavDropdown.Item>
+                                                <NavDropdown.Item onClick={() => changePage('bookingList')}>내
+                                                    예약</NavDropdown.Item>
+                                                <NavDropdown.Item onClick={() => changePage('user/update')}>내 정보
+                                                    수정</NavDropdown.Item>
                                                 <NavDropdown.Item onClick={() => changePage('AddressForm2')}>
                                                     숙소 등록
                                                 </NavDropdown.Item>
-                                                <NavDropdown.Item href="#action/3.2">내 숙소 관리</NavDropdown.Item>
                                                 <NavDropdown.Item onClick={() => changePage('reviews')}>내가 작성한 Review</NavDropdown.Item>
                                                 <NavDropdown.Item onClick={() => changePage('cart')}>Cart</NavDropdown.Item>
                                                 <NavDropdown.Item onClick={() => changePage('favorites')}>찜 보기</NavDropdown.Item>
-                                                <NavDropdown.Item href="#action/3.2">남은 등급 상승포인트</NavDropdown.Item>
                                                 <NavDropdown.Item onClick={() => changePage('faqBoard/faqAdmin')}>
                                                     자주 묻는 질문 (FAQ) 관리
                                                 </NavDropdown.Item>

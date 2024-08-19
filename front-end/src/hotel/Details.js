@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import {useLocation, useParams, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomList from "../room/RoomList";
 import HotelFacility from "./components/HotelFacility";
@@ -43,16 +43,17 @@ const Details = () => {
         nextDay.setDate(nextDay.getDate() + 1);
         return nextDay.toISOString().split('T')[0];
     };
+
     const location = useLocation();
     const navigate = useNavigate();
-    const userInfo = location.state?.userData || null;
+    const userInfo = location.state?.userData?.userInfo || null;
     const initialCheckInDate = location.state?.checkInDate || getTodayDate();
     const initialCheckOutDate = location.state?.checkOutDate || getNextDate(getTodayDate());
 
     const [checkInDate, setCheckInDate] = useState(initialCheckInDate);
     const [checkOutDate, setCheckOutDate] = useState(initialCheckOutDate);
-    const { id } = useParams();
-    const [hotel, setHotel] = useState(null);
+    let { id } = useParams();
+    let [ hotel, setHotel ] = useState({});
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -65,7 +66,7 @@ const Details = () => {
     useEffect(() => {
         const fetchHotelDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/hotel/details/${id}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8080/hotel/details/${id}`, {withCredentials: true});
                 setHotel(response.data.hotel);
                 console.log(response.data);
             } catch (error) {
@@ -73,14 +74,22 @@ const Details = () => {
                 setError('호텔 정보를 가져오는 데 오류가 발생했습니다.');
             }
         };
-
         const fetchReviews = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/review/hotel/${id}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8080/review/hotel/${id}`, {withCredentials: true});
                 if (response.status === 200) {
-                    setReviews(response.data.reviews || []);
+                    const reviews = response.data.reviews || [];
+
+                    // 각 리뷰에 대해 사용자 닉네임 가져오기
+                    const reviewPromises = reviews.map(async (review) => {
+                        const userResponse = await axios.get(`http://localhost:8080/user/${review.userId}/nickname`, { withCredentials: true });
+                        return { ...review, userName: userResponse.data };
+                    });
+
+                    const reviewsWithUsernames = await Promise.all(reviewPromises);
+                    setReviews(reviewsWithUsernames);
                 } else {
-                    new Error('서버 오류');
+                    throw new Error('서버 오류');
                 }
             } catch (error) {
                 console.error('Error fetching reviews:', error);
@@ -97,6 +106,9 @@ const Details = () => {
         fetchAllData();
     }, [id]);
 
+
+    const isFormValid = checkInDate && checkOutDate && new Date(checkInDate) <= new Date(checkOutDate);
+
     const handleViewMyQuestions = () => {
         navigate('/hotel-qna', {
             state: {
@@ -112,9 +124,10 @@ const Details = () => {
         console.log("Write question clicked");
     };
 
-    if (loading) {
-        return <Spinner animation="border" />;
-    }
+    if (!hotel) return <div>Loading...</div>;
+    if (loading) return <Spinner animation="border" variant="primary"/>;
+    if (error) return <Alert variant="danger">{error}</Alert>;
+    if (!hotel) return <div>Loading...</div>;
 
     if (error) {
         return <Alert variant="danger">{error}</Alert>;
@@ -160,14 +173,14 @@ const Details = () => {
                     <p>{hotel.detail}</p>
                 </Col>
                 <Col>
-                    <Kakao id={id} />
+                    <Kakao id={id}/>
                 </Col>
             </Row>
             <Row className="mt-3">
                 <Col md={12}>
                     <h4>호텔 편의 시설</h4>
                     <ul>
-                        <HotelFacility amenities={hotel.facilities} />
+                        <HotelFacility amenities={hotel.facilities}/>
                     </ul>
                 </Col>
             </Row>
@@ -207,12 +220,12 @@ const Details = () => {
                 <Col sm={9}>
                     <Row className="mt-3">
                         <RoomList userInfo={userInfo} checkInDate={checkInDate} checkOutDate={checkOutDate}
-                                  hotelId={hotel.id} />
+                                  hotelId={hotel.id}/>
                     </Row>
                 </Col>
             </Row>
 
-            <Row className="mt-5">
+            <Row>
                 <Col>
                     <h4>호텔 리뷰</h4>
                     {reviews.length === 0 ? (
@@ -221,7 +234,7 @@ const Details = () => {
                         <ListGroup>
                             {reviews.map((review) => (
                                 <ListGroup.Item key={review.id}>
-                                    <h5>작성자: {review.user?.nickname || '익명'}</h5>
+                                    <h5>작성자: {review.userName}</h5>
                                     <p>{review.content}</p>
                                     <p><strong>평점:</strong> {review.rating}</p>
                                 </ListGroup.Item>

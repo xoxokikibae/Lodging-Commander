@@ -14,7 +14,7 @@ import java.util.List;
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
     @Query("SELECT MIN(r.price) FROM Room r WHERE r.hotel.id = :hotelId")
-    int findMinPriceByHotelId(@Param("hotelId") Long hotelId);
+    Integer findMinPriceByHotelId(@Param("hotelId") Long hotelId);
 
 
     @Query("SELECT new com.hotel.lodgingCommander.dto.room.RoomResponseDTO(" +
@@ -42,5 +42,7 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
             @Param("checkInDate") LocalDate checkInDate,
             @Param("checkOutDate") LocalDate checkOutDate);
 
+    @Query("select r from Room r where r.id = ?1")
+    Room findRoomById(Long id);
 
 }

@@ -1,10 +1,12 @@
 package com.hotel.lodgingCommander.controller;
 
 import com.hotel.lodgingCommander.dto.hotel.HotelResponseDTO;
+import com.hotel.lodgingCommander.entity.Hotel;
 import com.hotel.lodgingCommander.model.MapDTO;
 import com.hotel.lodgingCommander.service.HotelService;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +43,7 @@ public class HotelController {
     public MapDTO getAddressByHotelId(@PathVariable Long hotelId) {
         return HOTEL_SERVICE.getAddressByHotelId(hotelId);
     }
+
     @GetMapping("/search")
     public ResponseEntity<Map<String, Object>> getSearchList(
             @RequestParam(name = "location") String location,
@@ -69,4 +72,23 @@ public class HotelController {
     }
 
 
+    @GetMapping("{location}")
+    public ResponseEntity<Map<String, Object>> getListByLocation(@PathVariable String location){
+        Map<String, Object> response = new HashMap<>();
+        response.put("hotelList",HOTEL_SERVICE.findByLocation(location));
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping({"newHotels"})
+    public ResponseEntity<Map<String, Object>> getNewHotels() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("hotelList",HOTEL_SERVICE.getRecentHotels());
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("names")
+    public ResponseEntity<Map<Long, String>> getHotelName(@RequestParam("ids") List<Long> ids){
+        Map<Long, String> hotelNames = HOTEL_SERVICE.getHotelNamesByIds(ids);
+        return ResponseEntity.ok(hotelNames);
+    }
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../api';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,8 +7,9 @@ import { Button, ButtonGroup, Col, Container, Row, Table} from "react-bootstrap"
 const Home = () => {
     const location = useLocation()
     const navigate = useNavigate()
-    const [userData, setUserData] = useState(null);
-    const [data] = useState({userDTO: {} });  // 초기 상태 설정
+    const {userData, setUserData} = useState(null);
+    const {email, nickname, role} = userData || {};
+    const [data] = useState({userDTO: {}});  // 초기 상태 설정
 
     const fetchUserData = useCallback(async () => {
         try {
@@ -18,20 +19,20 @@ const Home = () => {
             console.error('Failed to fetch user data:', error);
             navigate('/Auth');
         }
-    }, [navigate]);
+    }, [navigate, setUserData]);
 
     useEffect(() => {
-        if (location.state && location.state.userData) {
+        if (!location.state && location.state.userData) {
             setUserData(location.state.userData);
         } else {
             const token = localStorage.getItem('token');
             if (!token) {
                 navigate('/Auth');
             } else {
-                fetchUserData();
+                    fetchUserData();
+                }
             }
-        }
-    }, [location, navigate, fetchUserData]);
+    }, [location, fetchUserData, navigate, setUserData]);
 
     const onLogout = async () => {
         try {
@@ -62,8 +63,6 @@ const Home = () => {
         return <div> Loading... </div>;
     }
 
-    const {email, nickname, role} = userData;
-
     return (
         <Container>
             <Row className="justify-content-center">
@@ -90,7 +89,7 @@ const Home = () => {
                                     <Button onClick={goBack}>뒤로가기</Button>
                                     <Button onClick={onLogout}>로그아웃</Button>
                                     <Button onClick={goToUserPage}>마이 페이지</Button>
-                                    <Button onClick={goToFaqAdminPage}>자주 묻는 질문(FAQ) 관리</Button>
+                                    <Button onClick={goToFaqAdminPage}>자주 묻는 질문(FAQ) 관리 페이지 </Button>
                                 </ButtonGroup>
                             </td>
                         </tr>

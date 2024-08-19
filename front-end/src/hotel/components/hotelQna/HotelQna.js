@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
-import {useLocation, useParams} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Container, Tab, Tabs, Pagination, Button, Modal, Form, Alert, Spinner } from "react-bootstrap";
 import './HotelQna.css';
 
@@ -48,20 +48,20 @@ function HotelQna({ qnaData }) {
         }
     }, [hotelId, fetchQuestions]);
 
-    const handleSubmitAnswer = async (event) => {
-        event.preventDefault();
-        try {
-            await axios.post(`/hotel/details/${hotelId}`, {
-                hotelAnswerContent: event.target.answer.value,
-                userId: getCurrentUserId()
-            });
-            event.target.reset();
-            fetchQuestions();
-        } catch (error) {
-            console.error('Error submitting answer:', error);
-            setError('답변 제출 중 오류가 발생했습니다. 다시 시도해 주세요.');
-        }
-    };
+    // const handleSubmitAnswer = async (event) => {
+    //     event.preventDefault();
+    //     try {
+    //         await axios.post(`/hotel/details/${hotelId}`, {
+    //             hotelAnswerContent: event.target.answer.value,
+    //             userId: getCurrentUserId()
+    //         });
+    //         event.target.reset();
+    //         fetchQuestions();
+    //     } catch (error) {
+    //         console.error('Error submitting answer:', error);
+    //         setError('답변 제출 중 오류가 발생했습니다. 다시 시도해 주세요.');
+    //     }
+    // };
 
     const handleWriteQuestion = () => {
         setIsModalOpen(true);

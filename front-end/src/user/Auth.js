@@ -1,13 +1,14 @@
 import '../css/user/Auth.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button, Container, FormControl, Table, Alert, Col, Row, ButtonGroup} from "react-bootstrap";
+import {Button, Container, FormControl, Table, Alert, Col, Row, ButtonGroup, Form} from "react-bootstrap";
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import api from '../api';
+import api from "../api";
 
 const Auth = () => {
     const [inputs, setInputs] = useState({
         email: '',
+        domain: 'naver.com',
         password: ''
     });
 
@@ -32,9 +33,15 @@ const Auth = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        if (inputs.email === '' || inputs.domain === '' || inputs.password === '') {
+            setError('이메일과 비밀번호를 모두 입력해주세요.')
+            return
+        }
+
         try {
             const formData = new FormData()
-            formData.append('email', inputs.email)
+            formData.append('email', `${inputs.email}@${inputs.domain}`)
             formData.append('password', inputs.password)
 
             const response = await api.post('/user/auth', formData);
@@ -52,7 +59,24 @@ const Auth = () => {
 
     const onRegister = () => {
         navigate('/user/register');
-    };
+    }
+
+    useEffect(() => {
+        const checkAuthStatus = async () => {
+            try {
+                const response = await api.get('/user/checkUser', {
+                    withCredentials: true
+                })
+                if (response.data) {
+                    navigate('/user/authSuccess', {state: {userData: response.data}})
+                }
+            } catch (error) {
+                console.log('Not authenticated')
+            }
+        }
+
+        checkAuthStatus()
+    }, [navigate])
 
     return (
         <Container>
@@ -69,11 +93,24 @@ const Auth = () => {
                             <tr>
                                 <td>이메일</td>
                                 <td>
-                                    <FormControl
-                                        type={'text'}
-                                        name={'email'}
-                                        value={inputs.email}
-                                        onChange={onChange}/>
+                                    <Form.Group as={Row} controlId='formEmail'>
+                                        <Col xs={7}>
+                                            <FormControl
+                                                type='text'
+                                                name='email'
+                                                value={inputs.email}
+                                                onChange={onChange}
+                                                placeholder='이메일'
+                                            />
+                                        </Col>
+                                        <Col xs={5}>
+                                            <Form.Select name='domain' value={inputs.domain} onChange={onChange}>
+                                                <option value='gmail.com'>gmail.com</option>
+                                                <option value='naver.com'>naver.com</option>
+                                                <option value='daum.net'>daum.net</option>
+                                            </Form.Select>
+                                        </Col>
+                                    </Form.Group>
                                 </td>
                             </tr>
                             <tr>
@@ -107,7 +144,7 @@ const Auth = () => {
                 </Col>
             </Row>
         </Container>
-    );
-};
+    )
+}
 
 export default Auth;

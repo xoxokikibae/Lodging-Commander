@@ -1,9 +1,10 @@
 package com.hotel.lodgingCommander.controller;
 
-import com.hotel.lodgingCommander.dto.UserDTO;
+import com.hotel.lodgingCommander.dto.user.UserDTO;
 import com.hotel.lodgingCommander.entity.User;
 import com.hotel.lodgingCommander.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RequestMapping("/user/")
 public class UserController {
 
@@ -36,9 +37,23 @@ public class UserController {
     public ResponseEntity<?> update(@RequestBody UserDTO userDTO) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        USER_SERVICE.update(email, userDTO.toEntity());
+        try {
+            USER_SERVICE.update(email, userDTO.toEntity());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("업데이트 중 오류가 발생했습니다.");
+        }
+    }
 
-        return ResponseEntity.ok().build();
+    @GetMapping("{id}/nickname")
+    public ResponseEntity<String> getUserNicknameById(@PathVariable Long id) {
+        try {
+            User user = USER_SERVICE.getUserById(id);
+            return ResponseEntity.ok(user.getNickname());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(404).body("User not found");
+        }
     }
 
     @DeleteMapping("delete")
@@ -97,7 +112,17 @@ public class UserController {
     public ResponseEntity<Void> logOutSuccess(Authentication authentication) {
         System.out.println("log out success");
         System.out.println("로그아웃 후 사용자 정보 테스트 : " + authentication);
+        SecurityContextHolder.clearContext();
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("checkEmail")
+    public ResponseEntity<Map<String, Boolean>> checkEmail(@RequestBody Map<String, String> emailRequest) {
+        String email = emailRequest.get("email");
+        boolean exists = USER_SERVICE.emailExists(email);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("exists", exists);
+        return ResponseEntity.ok(response);
     }
 }
