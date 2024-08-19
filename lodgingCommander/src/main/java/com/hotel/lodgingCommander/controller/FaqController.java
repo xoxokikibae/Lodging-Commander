@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public class FaqController {
         this.faqService = faqService;
     }
 
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/faqAdmin/listFaqs")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<Faq>> getAllFaqs() {
@@ -31,12 +34,14 @@ public class FaqController {
         return new ResponseEntity<>(faqs, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/faqAdmin/faqs/{id}")
     public ResponseEntity<?> getFaqById(@PathVariable Long id) {
         Faq faq = faqService.getFaqById(id);
         return new ResponseEntity<>(faq, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "/faqAdmin/Write/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Faq> createFaq(@PathVariable Long id, @RequestBody Faq faq) {
         System.out.println("Received FAQ:" + faq);
@@ -44,12 +49,14 @@ public class FaqController {
         return new ResponseEntity<>(createdFaq, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/faqAdmin/update/{id}")
     public ResponseEntity<Faq> updateFaq(@PathVariable Long id, @RequestBody Faq faqDetails) {
         Faq updatedFaq = faqService.updateFaq(id, faqDetails);
         return new ResponseEntity<>(updatedFaq, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/faqAdmin/delete/{id}")
     public ResponseEntity<Void> deleteFaq(@PathVariable Long id) {
         faqService.deleteFaq(id);

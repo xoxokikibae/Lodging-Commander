@@ -1,28 +1,44 @@
-import React, {useState} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
-import axios from 'axios';
+import React, {useEffect, useState, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import api from '../api';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button, ButtonGroup, Col, Container, Row, Table} from "react-bootstrap";
+import { Button, ButtonGroup, Col, Container, Row, Table} from "react-bootstrap";
 
 const Home = () => {
     const location = useLocation()
     const navigate = useNavigate()
-    const {userData} = location.state
-    const {email, nickname, role} = userData || {};
-    const [data] = useState({userDTO: {}});  // 초기 상태 설정
+    const [userData, setUserData] = useState(null);
+    const [data] = useState({userDTO: {} });  // 초기 상태 설정
 
-    React.useEffect(() => {
-        if (!userData) {
-            navigate('/logIn');
+    const fetchUserData = useCallback(async () => {
+        try {
+            const response = await api.get('/user/info');
+            setUserData(response.data);
+        } catch (error) {
+            console.error('Failed to fetch user data:', error);
+            navigate('/Auth');
         }
-    }, [userData, navigate]);
+    }, [navigate]);
+
+    useEffect(() => {
+        if (location.state && location.state.userData) {
+            setUserData(location.state.userData);
+        } else {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                navigate('/Auth');
+            } else {
+                fetchUserData();
+            }
+        }
+    }, [location, navigate, fetchUserData]);
 
     const onLogout = async () => {
         try {
-            let response = await axios.post('http://localhost:8080/user/logOutSuccess', {
-                withCredentials: true,
-            });
+            let response = await api.post('/user/logOutSuccess');
+
             if (response.status === 200) {
+                localStorage.removeItem('token');
                 navigate('/')
             }
         } catch (error) {
@@ -43,8 +59,10 @@ const Home = () => {
     }
 
     if (!userData) {
-        return null; // userData가 없으면 아무것도 렌더링하지 않음
+        return <div> Loading... </div>;
     }
+
+    const {email, nickname, role} = userData;
 
     return (
         <Container>

@@ -1,6 +1,7 @@
 import './App.css';
-import {Route, Routes, Navigate} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import React from 'react';
+import ProtectedRoute from './faqBoard/faqAdmin/ProtectedRoute';
 
 //Import "User-related"
 import Auth from "./user/Auth";
@@ -44,40 +45,45 @@ import HotelQna from "./hotel/components/hotelQna/HotelQna";
 
 function App() {
     return (
-        <div className="App">
-            <Header/>
+        <Router>
+            <div className="App">
+                <Header/>
+                <Routes>
+                    //from main branch
+                    <Route path="/" element={
+                        <div>
+                            <StartPage/>
+                        </div>
+                    }/>
 
-            <Routes>
-                //from main branch
-                <Route path="/" element={
-                    <div>
-                        <StartPage/>
-                    </div>
-                }/>
+                    <Route path="/user/register" element={<Register/>}/>
+                    <Route path="/user/update" element={<Update/>}/>
+                    <Route path="/user/info" element={<Info/>}/>
+                    <Route path="/user/authSuccess" element={<Home/>}/>
+                    <Route path="/user/authFail" element={<AuthFail/>}/>
+                    <Route path="/Auth" element={<Auth/>}/>
 
-                <Route path="/user/register" element={<Register/>}/>
-                <Route path="/user/update" element={<Update/>}/>
-                <Route path="/user/info" element={<Info/>}/>
-                <Route path="/user/authSuccess" element={<Home/>}/>
-                <Route path="/user/authFail" element={<AuthFail/>}/>
-                <Route path="/Auth" element={<Auth/>}/>
+                    //from jeongyeon branch
+                    <Route path="/hotel/details/:id" element={<Details/>}/>
+                    <Route path="/hotel/hotel-qna" element={<HotelQna/>}/>
 
-                <Route path="/hotel/details/:id" element={<Details/>}/>
-                <Route path="/cart" element={<Cart/>}/>
+                    <Route path="/cart" element={<Cart/>}/>
 
-                //from jeongyeon branch
-                <Route path="/faqBoard/faqMain" element={<FaqMain/>}/>
+                    //from jeongyeon branch
+                    <Route path="/faqBoard/faqMain" element={<FaqMain/>}/>
 
-                <Route path='/faqBoard/faqAdmin' element={<FaqAdmin/>}/>
+                    <Route path='/faqBoard/faqAdmin' element={
+                        <ProtectedRoute> <FaqAdmin/> </ProtectedRoute>
+                    }/>
 
-                <Route path="/faqBoard/faqAdmin/ShowList" element={<ShowList/>}/>
-                <Route path="/faqBoard/faqAdmin/Write" element={<Write/>}/>
-                <Route path="/faqBoard/faqAdmin/Modified/:id" element={<Modified/>}/>
-                <Route path="/faqBoard/faqAdmin/ShowOne/:id" element={<ShowOne/>}/>
-                <Route path="/faqBoard/faqAdmin/Delete/:id" element={<Delete/>}/>
+                    <Route path="/faqBoard/faqAdmin/ShowList" element={<ShowList/>}/>
+                    <Route path="/faqBoard/faqAdmin/Write" element={<Write/>}/>
+                    <Route path="/faqBoard/faqAdmin/Modified/:id" element={<Modified/>}/>
+                    <Route path="/faqBoard/faqAdmin/ShowOne/:id" element={<ShowOne/>}/>
+                    <Route path="/faqBoard/faqAdmin/Delete/:id" element={<Delete/>}/>
 
-                // Hotel QNA by jeongyeon
-                <Route path="/hotel/components/hotelQna" element={<HotelQna/>}/> />
+                    // Hotel QNA by jeongyeon
+                    <Route path="/hotel/components/hotelQna" element={<HotelQna/>}/> />
 
                     // Redirect for FAQ Main
                     <Route path="/faqMain" element={<Navigate to="/faqBoard/faqMain" replace="/faqBoard"/>}/>
@@ -91,10 +97,11 @@ function App() {
                     <Route path="/HotelForm" element={<HotelForm/>}/>
                     <Route path="/RoomForm" element={<RoomForm/>}/>
                     <Route path="/AddHotelSuccess" element={<AddHotelSuccess/>}/>
-            </Routes>
-            <Footer/>
-        </div>
-);
+                </Routes>
+                <Footer/>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

@@ -1,9 +1,9 @@
 import '../css/user/Auth.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Container, FormControl, Table, Alert, Col, Row, ButtonGroup} from "react-bootstrap";
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import axios from "axios";
+import api from '../api';
 
 const Auth = () => {
     const [inputs, setInputs] = useState({
@@ -13,6 +13,14 @@ const Auth = () => {
 
     const [error, setError] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Check if user is already authenticated
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate('/user/authSuccess')
+        }
+    }, [navigate]);
 
     const onChange = (e) => {
         let {name, value} = e.target;
@@ -29,12 +37,7 @@ const Auth = () => {
             formData.append('email', inputs.email)
             formData.append('password', inputs.password)
 
-            const response = await axios({
-                url: 'http://localhost:8080/user/auth',
-                method: 'POST',
-                data: formData,
-                withCredentials: true
-            })
+            const response = await api.post('/user/auth', formData);
 
             if (response.data.result === 'success') {
                 localStorage.setItem('token', response.data.token)

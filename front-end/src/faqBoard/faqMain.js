@@ -166,6 +166,7 @@ function FaqMain() {
                         </ul>
                     </div>
                 </div>
+
             )}
 
             {activePopup === 'document' && selectedDocument && (
@@ -197,7 +198,6 @@ function FaqMain() {
                     </div>
                 </div>
             )}
-
         </div>
     );
 }

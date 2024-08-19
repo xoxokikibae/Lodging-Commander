@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RoomList from "../room/RoomList";
 import HotelFacility from "./components/HotelFacility";
@@ -44,6 +44,7 @@ const Details = () => {
         return nextDay.toISOString().split('T')[0];
     };
     const location = useLocation();
+    const navigate = useNavigate();
     const userInfo = location.state?.userData || null;
     const initialCheckInDate = location.state?.checkInDate || getTodayDate();
     const initialCheckOutDate = location.state?.checkOutDate || getNextDate(getTodayDate());
@@ -57,9 +58,9 @@ const Details = () => {
     const [error, setError] = useState(null);
 
     //QNA by jeongyeon
-    const [qnaList, setQnaList] = useState([]);
-    const [qnaData, setQnaData] = useState(null);
-    const [qnaError, setQnaError] = useState(null);
+    const [qnaList] = useState([]);
+    const [qnaData] = useState(null);
+    const [qnaError] = useState(null);
 
     useEffect(() => {
         const fetchHotelDetails = async () => {
@@ -97,7 +98,12 @@ const Details = () => {
     }, [id]);
 
     const handleViewMyQuestions = () => {
-        // Implement the logic for viewing user's questions
+        navigate('/hotel-qna', {
+            state: {
+                hotelId: id,
+                hotelName: hotel.hotelName
+            }
+        });
         console.log("View my questions clicked");
     };
 
@@ -232,7 +238,7 @@ const Details = () => {
                         <h2 style={HotelQnaHeading2}>숙소에 대해 궁금한 점이 있으신 경우 아래 Q&A를 통해 문의해주세요.</h2>
 
                         {qnaError && <Alert variant="danger">{qnaError}</Alert>}
-                        {qnaData && <HotelQna hotelId={id} hotelName={hotel.hotelName} qnaData={qnaData} />}
+                        {qnaData && <HotelQna qnaData={qnaData} />}
 
                         <div className="d-flex justify-content-between mb-3">
                             <Button className="qna-view-all-button" onClick={handleViewMyQuestions}>나의 Q&A 조회</Button>

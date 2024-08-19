@@ -3,6 +3,8 @@ import './Write.css';
 import axios from 'axios';
 import {Container, Button, Form} from "react-bootstrap";
 
+import {useNavigate} from 'react-router-dom';
+
 const categories = [
     {id: 1, title: "숙소", icon: "🏨"},
     {id: 2, title: "결제", icon: "💳"},
@@ -15,44 +17,37 @@ function Write() {
     const [content, setContent] = useState('');
     const [category, setCategory] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            await axios.post('http://localhost:8080/faqBoard/faqAdmin/Write/0',
-                JSON.stringify({
-                    'title': title,
-                    'content': content,
-                    'category': category
-                }),
+            const token = localStorage.getItem('token');
+            const response = await axios.post('http://localhost:8080/faqBoard/faqAdmin/Write/0',
+                {title, content},
                 {
-                    withCredentials: true,
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true
                 }
             );
             alert('FAQ created successfully');
             setTitle('');
             setContent('');
             setCategory('');
-            // Redirect or clear form
-
+            console.log('FAQ created successfully:', response.data);
+            navigate('/faqBoard/faqAdmin/ShowList');
         } catch (error) {
-            if (error.response) {
-                console.error('Error data:', error.response.data);
-                console.error('Error status:', error.response.status);
-                console.error('Error headers:', error.response.headers);
-            } else if (error.request) {
-                console.error('Error request:', error.request);
-            } else {
-                console.error('Error message:', error.message);
+                console.error('Error data:', error.response?.data || error.message);
+                console.error('Error status:', error.response?.status);
+                console.error('Error headers:', error.response?.headers);
+            if (error.response?.status === 403) {
+                alert('You do not have permission to create FAQs. Please log in as an admin.');
+                navigate('/Auth');
             }
-            alert(`Error creating FAQ: ${error.response?.data?.message || error.message}`);
-        } finally {
-            setIsLoading(false);
         }
     };
 

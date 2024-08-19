@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
+import {useLocation, useParams} from 'react-router-dom';
 import { Container, Tab, Tabs, Pagination, Button, Modal, Form, Alert, Spinner } from "react-bootstrap";
 import './HotelQna.css';
 
-function HotelQna({ hotelId, hotelName, qnaData }) {
+function HotelQna({ qnaData }) {
+    const location = useLocation();
+
     const [questions, setQuestions] = useState(qnaData || []);
     const [activeTab, setActiveTab] = useState('all');
     const [filters, setFilters] = useState({ category: 'all', answeredStatus: 'all' });
@@ -13,6 +16,8 @@ function HotelQna({ hotelId, hotelName, qnaData }) {
     const [isLoading, setIsLoading] = useState(true);
     const [showMyQuestions, setShowMyQuestions] = useState(false);
     const [error, setError] = useState(null);
+
+    const {hotelId, hotelName} = location.state || {};
 
     const fetchQuestions = useCallback(() => {
         setIsLoading(true);
@@ -38,8 +43,10 @@ function HotelQna({ hotelId, hotelName, qnaData }) {
     }, [hotelId, filters, currentPage, showMyQuestions]);
 
     useEffect(() => {
-        fetchQuestions();
-    }, [fetchQuestions]);
+        if (hotelId) {
+            fetchQuestions();
+        }
+    }, [hotelId, fetchQuestions]);
 
     const handleSubmitAnswer = async (event) => {
         event.preventDefault();

@@ -40,6 +40,7 @@ public class SecurityConfig {
                                 .requestMatchers("/sample.jpg").permitAll()
                                 .requestMatchers("/hotel/details/**").permitAll()
                                 .requestMatchers("/likelist/**").permitAll()
+                                .requestMatchers("/faqBoard/faqAdmin/**").hasRole("ADMIN")
                                 .anyRequest().authenticated())
                 .formLogin((form) ->
                         form

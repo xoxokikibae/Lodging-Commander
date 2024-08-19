@@ -40,7 +40,7 @@ const columnStyle = {
 const linkStyle = {
     color: '#7887d6',
     textDecoration: 'none',
-    marginBottom: '0.5rem',
+    marginBottom: '0.5rem'
 };
 
 const bottomStyle1 = {
